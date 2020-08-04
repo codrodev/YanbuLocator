@@ -1,17 +1,280 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
+﻿
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+.navbar-inverse {
+    background: transparent linear-gradient(92deg, #6F0902 0%, #AF3E02 100%) 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    opacity: 1;
+    padding: 4px 10px 0px 5px;
+}
+
+.container{
+    max-width:100% !important
+}
+
+.menu .hamburger {
+    background: black;
+    padding: 5px 8px;
+    border-radius: 5px;
+    position: absolute;
+    top: 75px;
+    right: 15px;
+    z-index: 100;
+    cursor: pointer;
+    padding-top: 2px;
+}
+
+    .menu .hamburger img {
+        width: 14px;
+    }
+
+.menu-items li {
+    float: left;
+    background: #AE3D02 0% 0% no-repeat padding-box;
+    box-shadow: 3px 6px 9px #00000029;
+    opacity: 1;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 50%;
+    list-style: none;
+    cursor: pointer;
+    height: 44px;
+    width: 45px;
+}
+
+.d-block{
+    display:block !important
+}
+
+.menu-items li img {
+    width: 20px;
+    height: 20px;
+    margin-top: -8px;
+}
+
+.menu-items {
+    left: 25%;
+    right: auto;
+    display: none;
+    width: fit-content;
+    z-index: 100;
+    position: absolute;
+    top: 65px;
+}
+
+#map-container {
+    background: #dddddd;
+    min-height: 100%;
+    min-width: 100%;
+    display: block;
+    position: absolute;
+}
+
+.layers-ddl{
+    position:absolute;
+    left:20px;
+    top:75px;
+    z-index:100;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 4.355em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+.btn-secondary, .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle, .btn-secondary:hover {
+    color: #000;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    width: 218px;
+    text-align: left;
+    outline: none;
+    box-shadow: none !important;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 4px 14px;
+    border-radius: 4px;
+}
+
+.dropdown-menu{
+    width:218px;
+}
+
+.layers-list li {
+    display: flex;
+    flex-wrap: nowrap;
+    height:28px;
+}
+.layers-list .icon {
+}
+
+.layers-list .toggle-btn{
+    
+}
+
+.layers-list .title {
+    width: 350px;
+}
+
+.layers-list .icon img {
+    width: 14px;
+    height: 14px;
+    margin: 0px 5px;
+    margin-top: -3px;
+}
+
+.layers-list {
+    list-style: none;
+    margin: 0px -31px
+}
+
+/* CSS rules are kept repetitive so that you can get CSS rules for each button easily :) */
+
+* {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    *:focus {
+        outline: none;
+    }
+
+#app-cover {
+    display: table;
+    width: 600px;
+    margin: 80px auto;
+    counter-reset: button-counter;
+}
+
+
+.toggle-button-cover {
+    display: table-cell;
+    position: relative;
+    width: 200px;    
+    box-sizing: border-box;
+}
+
+
+.button-coverx, .knobs, .layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.button {
+    position: relative;
+    top: 7px;
+    width: 30px;
+    height: 14px;    
+    overflow: hidden;
+}
+
+    .button.r, .button.r .layer {
+        border-radius: 100px;
+    }
+
+    .button.b2 {
+        border-radius: 2px;
+    }
+
+.checkbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.knobs {
+    z-index: 2;
+}
+
+.layer {
+    width: 100%;
+    background-color: grey;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+/* Button 1 */
+#button-1 .knobs:before {
+    content: ' ';
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 11px;
+    height: -18px;
+    color: #fff;
+    font-size: -6px;
+    font-weight: bold;
+    text-align: center;
+    /* line-height: 1; */
+    padding: 6px 4px;
+    background-color: #f2eded;
+    border-radius: 50%;
+    transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+#button-1 .checkbox:checked + .knobs:before {
+    left: 18px;
+    background-color: #f2eded;
+}
+
+#button-1 .checkbox:checked ~ .layer {
+    background-color: #17e18d;
+}
+
+#button-1 .knobs, #button-1 .knobs:before, #button-1 .layer {
+    transition: 0.3s ease all;
+}
+
+.detail-popup th{
+    text-align:center;
+}
+
+.popup {
+    position: absolute;
+    top: 200px;
+    right: 50px;
+    z-index: 100;
+    background: white;
+    box-shadow: #898989 0px 0px 9px 3px;
+}
+
+    .popup .title {
+        width: 100%;
+        /* height: 20px; */
+        background: black;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 0px 0px 15px 15px;
+    }
+
+button.viewbtn {
+    border: none;
+    background: #FF9D00;
+    color: white;
+    border-radius: 8px;
+    font-size: .8em;
+    padding: 6px;
+    font-weight: bold;
 }

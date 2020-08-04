@@ -14,3 +14,22 @@
         });
     });
 });
+
+var menuVisible = false;
+
+function hotelClick() {
+    alert('hotel icon clicked');
+}
+
+function toggleMenu() {
+    if (menuVisible) 
+        $('.menu-items').removeClass('d-block');
+    else
+        $('.menu-items').addClass('d-block');
+
+    menuVisible = !menuVisible;
+}
+
+function toggleLayer(e, layer) {
+    alert('layer toggle');
+}

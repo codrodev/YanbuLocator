@@ -10,6 +10,8 @@ namespace RCY_Yanbu_Locator
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/libs/jquery/jquery-{version}.js",
+                        "~/Scripts/libs/jquery/jquery-{version}.slim.min.js",
+                        "~/Scripts/libs/jquery/popper.min.js",
                         "~/Content/scripts/jqueryi18n/CLDRPluralRuleParser.js",
                         "~/Content/scripts/jqueryi18n/jquery.i18n.js",
                         "~/Content/scripts/jqueryi18n/jquery.i18n.messagestore.js",
@@ -26,7 +28,8 @@ namespace RCY_Yanbu_Locator
             //            "~/Scripts/libs/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/libs/bootstrap/bootstrap.js"));
+                      "~/Scripts/libs/bootstrap/bootstrap.js",
+                      "~/Scripts/libs/bootstrap/bootstrap-bundle.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap/bootstrap.css",

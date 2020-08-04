@@ -164,10 +164,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-reboot.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap.css" />
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\images\alarm.svg" />
+    <Content Include="Content\images\electric-bus.svg" />
+    <Content Include="Content\images\exchange.svg" />
+    <Content Include="Content\images\factory.svg" />
+    <Content Include="Content\images\hotel.svg" />
+    <Content Include="Content\images\jotta-cloud.svg" />
+    <Content Include="Content\images\logo-yl-web.png" />
+    <Content Include="Content\images\map.svg" />
+    <Content Include="Content\images\menu.svg" />
+    <Content Include="Content\images\mosque.svg" />
+    <Content Include="Content\images\rules.svg" />
+    <Content Include="Content\images\taxi.svg" />
     <Content Include="Content\scripts\jqueryi18n\CLDRPluralRuleParser.js" />
     <Content Include="Content\scripts\jqueryi18n\jquery.i18n.emitter.bidi.js" />
     <Content Include="Content\scripts\jqueryi18n\jquery.i18n.emitter.js" />
@@ -195,6 +211,8 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\global.js" />
     <Content Include="Scripts\app\map.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap.bundle.js" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap.bundle.min.js" />
     <Content Include="Scripts\libs\bootstrap\bootstrap.js" />
     <Content Include="Scripts\libs\bootstrap\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -218,11 +236,20 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Content\scripts\i18n\en.json" />
     <Content Include="Content\scripts\i18n\ar.json" />
+    <Content Include="Content\css\bootstrap\bootstrap-grid.css.map" />
+    <Content Include="Content\css\bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="Content\css\bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="Content\css\bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap.js.map" />
+    <Content Include="Scripts\libs\bootstrap\bootstrap.min.js.map" />
     <None Include="Scripts\libs\jquery\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-3.4.1.js" />
     <Content Include="Scripts\libs\jquery\jquery-3.4.1.min.js" />
     <Content Include="Scripts\libs\jquery\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\libs\jquery\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\libs\jquery\popper.min.js" />
     <Content Include="Scripts\libs\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
