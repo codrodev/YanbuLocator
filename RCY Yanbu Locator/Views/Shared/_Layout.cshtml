@@ -47,16 +47,16 @@
         <div class="hamburger" onclick="toggleMenu()"><img src="~/Content/images/menu.svg" /></div>
         <div class="menu-items">
             <ul>
-                <li onclick="hotelClick()"><img src="~/Content/images/hotel.svg" /></li>
-                <li><img src="~/Content/images/electric-bus.svg" /></li>
-                <li><img src="~/Content/images/mosque.svg" /></li>
-                <li><img src="~/Content/images/taxi.svg" /></li>
-                <li><img src="~/Content/images/jotta-cloud.svg" /></li>
-                <li><img src="~/Content/images/rules.svg" /></li>
-                <li><img src="~/Content/images/factory.svg" /></li>
+                <li onclick="togglePanel('hotel')"><img src="~/Content/images/hotel.svg" /></li>
+                <li onclick="togglePanel('busroute')"><img src="~/Content/images/electric-bus.svg" /></li>
+                <li onclick="togglePanel('salah')"><img src="~/Content/images/mosque.svg" /></li>
+                <li onclick="togglePanel('taxi')"><img src="~/Content/images/taxi.svg" /></li>
+                <li onclick="togglePanel('weather')"><img src="~/Content/images/jotta-cloud.svg" /></li>
+                <li onclick="togglePanel('rules')"><img src="~/Content/images/rules.svg" /></li>
+                <li onclick="togglePanel('history')"><img src="~/Content/images/factory.svg" /></li>
                 <li><img src="~/Content/images/map.svg" /></li>
                 <li><img src="~/Content/images/alarm.svg" /></li>
-                <li><img src="~/Content/images/exchange.svg" /></li>
+                <li onclick="togglePanel('currency')"><img src="~/Content/images/exchange.svg" /></li>
             </ul>
         </div>
     </div>
@@ -133,9 +133,10 @@
         </div>
     </div>
 
-    <div class="popup detail-popup">
+    <div class="popup hotel-popup">
         <div class="title">
             Hotel Details
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
             <table class="table table-hover">
@@ -146,7 +147,7 @@
                         <th>Address</th>
                         <th>View</th>
                     </tr>
-                    </thead>
+                </thead>
                 <tbody>
                     <tr>
                         <td>hotel name</td>
@@ -156,6 +157,318 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="popup salah-popup">
+        <div class="title">
+            Salah Timings
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col">
+                    <span class="icon"><img src="~/Content/images/clock.svg" /></span>
+                    <span class="salahname">Imsak</span>
+                    <span class="time">4:03am</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/sunrise.svg" /></span>
+                    <span class="salahname">Sunrise</span>
+                    <span class="time">4:03am</span>
+                </div>
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/sunset.svg" /></span>
+                    <span class="salahname">Sunset</span>
+                    <span class="time">4:03am</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
+                    <span class="salahname">Sunrise</span>
+                    <span class="time">4:03am</span>
+                </div>
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
+                    <span class="salahname">Sunset</span>
+                    <span class="time">4:03am</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
+                    <span class="salahname">Sunrise</span>
+                    <span class="time">4:03am</span>
+                </div>
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
+                    <span class="salahname">Sunset</span>
+                    <span class="time">4:03am</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
+                    <span class="salahname">Sunrise</span>
+                    <span class="time">4:03am</span>
+                </div>
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/half-moon.svg" /></span>
+                    <span class="salahname">Sunset</span>
+                    <span class="time">4:03am</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="popup busroute-popup">
+        <div class="title">
+            Bus Route
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Bus Route Name
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="icon"><img src="~/Content/images/gps.svg" /></span>
+                                    <span class="font-weight-bold">Source</span>
+                                    <span class="time">4:03am</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="icon"><img src="~/Content/images/finish.svg" /></span>
+                                    <span class="font-weight-bold">Destination</span>
+                                    <span class="time">4:03am</span>
+                                </div>
+                            </div>
+
+                            <div class="row" style=" margin-top: 25px; margin-bottom: 13px; ">
+                                <div class="col">
+                                    <span class="font-weight-bold">Route: </span>
+                                    <ul class="bus-stops">
+                                        <li>stop 1</li>
+                                        <li>stop 2</li>
+                                        <li>stop 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="font-weight-bold">Total Distance: </span>
+                                    <span class="font-weight-bold">40 Km</span>
+                                </div>
+                                <div class="col-6">
+                                    <button class="viewbtn" type="button">Map View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Collapsible Group Item #2
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup currency-popup">
+        <div class="title">
+            Currency Exchange
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-5">
+                            <select class="form-control">
+                                <option selected>INR Indian Rupees</option>
+                                <option>USD Indian Rupees</option>
+                                <option>MYR Indian Rupees</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <img src="~/Content/images/exchange2.svg" style="height: 41px;" />
+                        </div>
+                        <div class="col-5">
+                            <select class="form-control">
+                                <option selected>INR Indian Rupees</option>
+                                <option>USD Indian Rupees</option>
+                                <option>MYR Indian Rupees</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 pricecalc">
+                            1 (INR) = 0.03 (USD)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-5">
+                    <input type="text" class="form-control" value="1.32" />
+                </div>
+                <div class="col-2">
+                    <i class="fas fa-equals"></i>
+                </div>
+                <div class="col-5">
+                    0.23 (USD)
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="popup weather-popup">
+        <div class="title">
+            Yanbu Weather
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <div class="row" style="margin-bottom:20px">
+                <div class="col-3">
+                    <div class="degree">42 C</div>
+                    <div class="temperature">Sunny</div>
+                </div>
+                <div class="col-3 degtempimage">
+                    <img src="~/Content/images/exchange2.svg" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div>Feels like</div>
+                    <div class="font-weight-bold">42</div>
+                </div>
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div>Feels like</div>
+                    <div class="font-weight-bold">42</div>
+                </div>
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div>Feels like</div>
+                    <div class="font-weight-bold">42</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div>Feels like</div>
+                    <div class="font-weight-bold">42</div>
+                </div>
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div>Feels like</div>
+                    <div class="font-weight-bold">42</div>
+                </div>
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div>Feels like</div>
+                    <div class="font-weight-bold">42</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup taxi-popup">
+        <div class="title">
+            City Taxi
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Saif</td>
+                        <td>208302333</td>
+                    </tr>
+                    <tr>
+                        <td>Saif</td>
+                        <td>208302333</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="popup rules-popup">
+        <div class="title">
+            Rules & Regulations
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <div class="rule-item">
+                <div>Building Regulation</div>
+                <div>
+                    Building Regulation.pdf
+                    <img src="~/Content/images/download.svg" onclick="" />
+                </div>
+            </div>
+            <div class="rule-item">
+                <div>Building Regulation</div>
+                <div>
+                    Building Regulation.pdf
+                    <img src="~/Content/images/download.svg" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup history-popup">
+        <div class="title">
+            MYAS History
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-8">
+                    Madinat Yanbu Al Sinaiyah (MYAS) is located about 350km North West of Jeddah. Yanbu is a port city on the western Red Sea coast of Saudi Arabia. A growing industrial and development town re created since 1975 out of the oil wealth of the kingdom. Yanbu has ancient roots in the Red Sea trading and pilgrimage routes. The city is famous for its role during the spread of Islam as well as its contribution to the Arab Revolt against Ottomans during World War I.
+                </div>
+                <div class="col-4">
+                    <img src="~/Content/images/Image1.png" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <img src="~/Content/images/Image2.png" />
+                </div>
+                <div class="col-8">
+                    The city’s story begins around an oasis of springs some 30 miles inland from the Red Sea coast up the Wadi Al Yanbu, underneath the Al Hijaz (or As-Sarat) mountains. This oasis, known as Yanbu and is located on one of only six passes through Al-Hijaz (the barrier) mountains, which connect Madinah to the Red Sea. The export of dates from the oasis, travelers heading from the coast of Madinah, and the flow of water down the Wadi to the sea all contributed to human settlement around the natural harbor, which became known as Yanbu Al Bahr (Yanbu-on-the-sea).
+                </div>
+            </div>
         </div>
     </div>
 

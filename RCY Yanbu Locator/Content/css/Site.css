@@ -11,7 +11,7 @@ textarea {
     background: transparent linear-gradient(92deg, #6F0902 0%, #AF3E02 100%) 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
     opacity: 1;
-    padding: 4px 10px 0px 5px;
+    padding: 4px 10px 6px 5px;
 }
 
 .container{
@@ -48,8 +48,9 @@ textarea {
     width: 45px;
 }
 
-.d-block{
-    display:block !important
+.d-block {
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .menu-items li img {
@@ -60,12 +61,14 @@ textarea {
 
 .menu-items {
     left: 25%;
-    right: auto;
-    display: none;
+    right: auto;    
     width: fit-content;
     z-index: 100;
     position: absolute;
     top: 65px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 #map-container {
@@ -245,7 +248,7 @@ textarea {
     transition: 0.3s ease all;
 }
 
-.detail-popup th{
+.hotel-popup th{
     text-align:center;
 }
 
@@ -253,9 +256,13 @@ textarea {
     position: absolute;
     top: 200px;
     right: 50px;
+    width: 430px;
     z-index: 100;
     background: white;
     box-shadow: #898989 0px 0px 9px 3px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
     .popup .title {
@@ -277,4 +284,220 @@ button.viewbtn {
     font-size: .8em;
     padding: 6px;
     font-weight: bold;
+}
+
+.salah-popup .content {
+    padding: 20px;
+    background: transparent url('../images/islam.png') 0% 0% no-repeat padding-box;
+    color: white;
+    background-size: cover;
+}
+
+.salah-popup {
+    background: transparent linear-gradient(129deg, #FFBA6A 0%, #089603 100%) 0% 0% no-repeat padding-box;
+    width:430px;
+}
+
+.salah-popup .row{
+    margin-bottom:15px;
+}
+
+    .salah-popup .salahname {
+        font-weight: bold;
+        margin: 0px 7px;
+    }
+
+    .salah-popup .icon img {
+        height: 17px;
+    }
+
+    .salah-popup .icon {
+        width: 20px;
+        display: inline-block;
+        text-align: center;
+    }
+
+
+.card-header button:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings'; /* essential for enabling glyphicon */
+    content: "\e114"; /* adjust as needed, taken from bootstrap.css */
+    float: right; /* adjust as needed */
+    color: grey; /* adjust as needed */
+}
+
+.panel-heading button.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080"; /* adjust as needed, taken from bootstrap.css */
+}
+
+.busroute-popup .content{
+    padding:5px;
+}
+
+.card-header {
+    padding: 0px;
+    background: transparent linear-gradient(94deg, #DD4C00 0%, #FDAF85 100%) 0% 0% no-repeat padding-box;
+    border-radius: 5px !important;
+    opacity: 1;
+    /* color: white; */
+}
+
+.card {
+    margin-bottom: 6px;
+}
+
+.busroute-popup .btn-link{
+    color:white;
+}
+
+    .busroute-popup .btn-link:hover, .btn-link:focus, .btn-link.focus {
+        color: white;
+        text-decoration: none;
+    }
+
+ul.bus-stops li:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f105";
+    padding-left: 10px;
+}
+
+ul.bus-stops li {
+    float: left;
+    list-style: none;
+    padding: 0px 7px;
+    /* content: 'x'; */
+}
+
+ul.bus-stops {
+    display: inline-flex;
+    padding:0px;
+}
+
+.busroute-popup .card-body {
+    background: #F2F2F2;
+}
+.busroute-popup .icon img {
+    height: 17px;
+    margin-right:3px;
+}
+
+.busroute-popup .viewbtn{
+    float:right;
+}
+
+ul.bus-stops li:last-child::after {
+    content:' '
+}
+
+span.close-btn {
+    float: left;
+    cursor:pointer;
+}
+
+.currency-popup {
+    background: transparent linear-gradient(129deg, #BD66FD 0%, #FF4040 100%) 0% 0% no-repeat padding-box;
+    width:500px;
+}
+
+.currency-popup .content{
+    padding:10px
+}
+
+    .currency-popup .content > .row {
+        height: 150px;
+        display: flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+        color: white;
+    }
+
+
+.currency-popup .content > .row:first-child {
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.pricecalc {
+    padding-top: 25px;
+}
+
+.weather-popup {
+    background: transparent linear-gradient(129deg, #F971FF 0%, #36C0E2 100%) 0% 0% no-repeat padding-box;
+    color:white;
+}
+
+.weather-popup .content{
+    padding:30px;
+}
+
+.weather-popup img{
+    height:30px;
+}
+
+    .weather-popup .content div{
+        text-align: center;
+    }
+
+.popup.weather-popup .content .col-4 {
+    padding: 11px;
+    font-size: .8em;
+}
+
+.degtempimage img {
+    height: 63px;
+    border-left: 1px solid white;
+    padding-left: 20px;
+}
+
+.weather-popup .degree {
+    text-align: left !important;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.weather-popup .temperature {
+    text-align: left !important;
+}
+
+.taxi-popup {
+    background: transparent linear-gradient(130deg, #44DFEB 0%, #FC6C6C 100%) 0% 0% no-repeat;
+    text-align:center
+}
+
+.rules-popup {
+    background: transparent linear-gradient(129deg, #2076CB 0%, #9B6601 100%) 0% 0% no-repeat padding-box;
+    color:white;
+   
+}
+
+    .rules-popup .content {
+        padding: 15px;
+    }
+
+.rule-item img {
+    float: right;
+    height: 13px;
+    margin-top: 7px;
+}
+
+.rule-item div:first-child {
+    border-bottom: 1px solid;
+}
+.rule-item {
+    margin-bottom: 12px;
+}
+
+.history-popup {
+    background: transparent linear-gradient(129deg, #395FFF 0%, #00AA34 100%) 0% 0% no-repeat;
+
+}
+
+.history-popup .content{
+    padding:15px;
+    font-size:.8em;
 }
