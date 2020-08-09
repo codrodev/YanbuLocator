@@ -263,6 +263,9 @@ textarea {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
+    overflow-x:hidden;  
+    overflow-y:auto;
+    max-height:400px;
 }
 
     .popup .title {
@@ -494,10 +497,19 @@ span.close-btn {
 
 .history-popup {
     background: transparent linear-gradient(129deg, #395FFF 0%, #00AA34 100%) 0% 0% no-repeat;
-
+    color:white;
 }
 
 .history-popup .content{
     padding:15px;
-    font-size:.8em;
+    font-size:.6em;
+}
+
+.history-popup img{
+    width:100%;
+}
+
+.center{
+    display:flex;
+    align-items:center;
 }

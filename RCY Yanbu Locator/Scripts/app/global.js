@@ -27,6 +27,7 @@ var currencyPnlVisible = false;
 var weatherPnlVisible = false;
 var taxiPnlVisible = false;
 var rulesPnlVisible = false;
+var historyPnlVisible = false;
 
 function togglePanel(pnl) {
     resetPanels();
@@ -72,6 +73,10 @@ function togglePanel(pnl) {
             rulesPnlVisible = true;
             $('.rules-popup').addClass('d-block');
             break;
+        case 'history':
+            historyPnlVisible = true;
+            $('.history-popup').addClass('d-block');
+            break;
     }
 }
 
@@ -87,6 +92,8 @@ function resetPanels() {
     hospitalPnlVisible = false;
     taxiPnlVisible = false;
     rulesPnlVisible = false;
+    historyPnlVisible = false;
+    $('.history-popup').removeClass('d-block');
     $('.bank-popup').removeClass('d-block');
     $('.hotel-popup').removeClass('d-block');
     $('.fuel-popup').removeClass('d-block');
