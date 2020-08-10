@@ -6,5 +6,10 @@
     "locale": "en",
     "message-documentation": "qqq"
   },
-  "welcome": "Welcome!"
+  "welcome": "Welcome!",
+  "Hotel_Details": "Hotel Details",
+  "Name": "Name",
+  "Contact": "Contact",
+  "Address": "Address",
+  "View": "View"
 }

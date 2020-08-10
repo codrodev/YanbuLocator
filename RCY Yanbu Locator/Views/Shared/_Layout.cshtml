@@ -14,6 +14,7 @@
     @*@Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -134,26 +135,19 @@
     </div>
 
     <div class="popup detail-popup">
-        <div class="title">
-            Hotel Details
+        <div class="title" data-i18n="Hotel_Details">
         </div>
         <div class="content">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Contact</th>
-                        <th>Address</th>
-                        <th>View</th>
+                        <th data-i18n="Name"></th>
+                        <th data-i18n="Contact"></th>
+                        <th data-i18n="Address"></th>
+                        <th data-i18n="View"></th>
                     </tr>
-                    </thead>
-                <tbody>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
+                </thead>
+                <tbody id="hotel_details_tbl_body">
                 </tbody>
             </table>
         </div>
@@ -163,7 +157,21 @@
 
     </div>
 
+    <script id="hotel_row" type="text/template">
+        <tr>
+            <td>{{hotelname}}</td>
+            <td>{{contact}}</td>
+            <td>{{address}}</td>
+            <td><button class="viewbtn" type="button" onclick="onHotelClick({{hotelID}}, {{lat}}, {{lon}})">Map View</button></td>
+        </tr>
+    </script>
+
     @RenderBody()
+
+    <script type="text/javascript">
+        var baseAPIsURL = '@System.Configuration.ConfigurationManager.AppSettings["APIsBaseURL"]';
+        var lang = '@lang';
+    </script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

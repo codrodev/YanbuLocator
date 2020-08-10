@@ -1,4 +1,6 @@
-﻿jQuery(function ($) {
+﻿
+
+jQuery(function ($) {
     
     $.i18n().load({
         'en': '/Content/scripts/i18n/en.json',
@@ -17,10 +19,6 @@
 
 var menuVisible = false;
 
-function hotelClick() {
-    alert('hotel icon clicked');
-}
-
 function toggleMenu() {
     if (menuVisible) 
         $('.menu-items').removeClass('d-block');
@@ -30,6 +28,3 @@ function toggleMenu() {
     menuVisible = !menuVisible;
 }
 
-function toggleLayer(e, layer) {
-    alert('layer toggle');
-}
