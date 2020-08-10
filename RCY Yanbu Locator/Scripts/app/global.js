@@ -42,6 +42,7 @@ function togglePanel(pnl) {
         case 'hotel':            
             hotelPnlVisible = true;
             $('.hotel-popup').addClass('d-block');
+            onOpenhotelPopup();
             break;
         case 'fuel':
             fuelPnlVisible = true;

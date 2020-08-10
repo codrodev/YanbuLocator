@@ -1,10 +1,11 @@
-﻿function hotelClick() {
+﻿function onOpenhotelPopup() {
     $.get({
         url: baseAPIsURL + 'm_GetHotels',
         dataType: 'json',
         contentType: "application/json",
         success: function (response) {
             if (typeof response == "object" && response.length) {
+                $('#hotel_details_tbl_body').html('');
                 var tempHotelRow = $.trim($('#hotel_row').html());
                 response.forEach(function (hotel) {
                     var row = tempHotelRow.replace(/{{hotelname}}/ig, hotel.Name);

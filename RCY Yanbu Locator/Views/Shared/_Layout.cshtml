@@ -1,4 +1,4 @@
-@{
+﻿@{
     var lang = @HttpContext.Current.Request.Cookies["lang"].Value;
 }
 
@@ -13,7 +13,7 @@
 
     @*@Scripts.Render("~/bundles/modernizr")*@
 </head>
-<body>
+<body onload="initMap()">
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -134,8 +134,10 @@
         </div>
     </div>
 
-    <div class="popup detail-popup">
-        <div class="title" data-i18n="Hotel_Details">
+    <div class="popup hotel-popup">
+        <div class="title" >
+            <span data-i18n="Hotel_Details"></span>
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
             <table class="table table-hover">
