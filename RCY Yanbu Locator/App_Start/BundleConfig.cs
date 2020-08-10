@@ -33,6 +33,7 @@ namespace RCY_Yanbu_Locator
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap/bootstrap.css",
+                        "~/Content/css/fontawesome/all.css",
                       "~/Content/css/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/app-scripts").Include(
