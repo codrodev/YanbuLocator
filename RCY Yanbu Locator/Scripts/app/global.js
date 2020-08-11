@@ -1,4 +1,6 @@
-﻿jQuery(function ($) {
+
+
+jQuery(function ($) {
     
     $.i18n().load({
         'en': '/Content/scripts/i18n/en.json',
@@ -42,6 +44,7 @@ function togglePanel(pnl) {
         case 'hotel':            
             hotelPnlVisible = true;
             $('.hotel-popup').addClass('d-block');
+            onOpenhotelPopup();
             break;
         case 'fuel':
             fuelPnlVisible = true;

@@ -13,7 +13,8 @@
 
     @*@Scripts.Render("~/bundles/modernizr")*@
 </head>
-<body>
+<body onload="initMap()">
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -134,11 +135,11 @@
     </div>
 
     <div class="popup hotel-popup">
-        <div class="title">
-            Hotel Details
+        <div class="title" >
+            <span data-i18n="Hotel_Details"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
-        <table class="table table-hover">
+         <table class="table table-hover">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -149,62 +150,9 @@
             </thead>
         </table>
         <div class="content">
-            <table class="table table-hover"> 
-                <tbody>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
-                    <tr>
-                        <td>hotel name</td>
-                        <td>23232323</td>
-                        <td>address</td>
-                        <td><button class="viewbtn" type="button">Map View</button></td>
-                    </tr>
+            <table class="table table-hover">
+                 
+                <tbody id="hotel_details_tbl_body">
                 </tbody>
             </table>
         </div>
@@ -560,7 +508,21 @@
 
     </div>
 
+    <script id="hotel_row" type="text/template">
+        <tr>
+            <td>{{hotelname}}</td>
+            <td>{{contact}}</td>
+            <td>{{address}}</td>
+            <td><button class="viewbtn" type="button" onclick="onHotelClick({{hotelID}}, {{lat}}, {{lon}})">Map View</button></td>
+        </tr>
+    </script>
+
     @RenderBody()
+
+    <script type="text/javascript">
+        var baseAPIsURL = '@System.Configuration.ConfigurationManager.AppSettings["APIsBaseURL"]';
+        var lang = '@lang';
+    </script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
