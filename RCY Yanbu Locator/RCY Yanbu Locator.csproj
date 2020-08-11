@@ -1950,6 +1950,7 @@
     <Content Include="Scripts\libs\jquery\jquery-3.4.1.min.js" />
     <Content Include="Scripts\libs\jquery\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\libs\jquery\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\libs\jquery\nicescroll.min.js" />
     <Content Include="Scripts\libs\jquery\popper.min.js" />
     <Content Include="Scripts\libs\modernizr-2.8.3.js" />
     <Content Include="Web.config" />

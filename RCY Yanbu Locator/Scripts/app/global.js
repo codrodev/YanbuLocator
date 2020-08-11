@@ -13,6 +13,8 @@
             $('html').i18n();
         });
     });
+
+    $(".popup .content").niceScroll();
 });
 
 var menuVisible = false;

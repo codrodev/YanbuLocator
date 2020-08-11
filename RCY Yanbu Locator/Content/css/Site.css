@@ -6,6 +6,9 @@ textarea {
     max-width: 280px;
 }
 
+body{
+    overflow:hidden;
+}
 
 .navbar-inverse {
     background: transparent linear-gradient(92deg, #6F0902 0%, #AF3E02 100%) 0% 0% no-repeat padding-box;
@@ -263,9 +266,9 @@ textarea {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
-    overflow-x:hidden;  
-    overflow-y:auto;
-    max-height:400px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    max-height: 400px;
 }
 
     .popup .title {
@@ -277,6 +280,11 @@ textarea {
         text-align: center;
         font-weight: bold;
         border-radius: 0px 0px 15px 15px;
+    }
+
+    .popup .content {
+        overflow-y: auto;
+        max-height: 355px;
     }
 
 button.viewbtn {
@@ -322,16 +330,14 @@ button.viewbtn {
 
 
 .card-header button:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings'; /* essential for enabling glyphicon */
-    content: "\e114"; /* adjust as needed, taken from bootstrap.css */
-    float: right; /* adjust as needed */
-    color: grey; /* adjust as needed */
+    font-family: 'Glyphicons Halflings';
+    content: ""; 
+    float: right; 
+    color: grey; 
 }
 
 .panel-heading button.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\e080"; /* adjust as needed, taken from bootstrap.css */
+    content: ""; 
 }
 
 .busroute-popup .content{
@@ -399,7 +405,12 @@ span.close-btn {
     cursor:pointer;
 }
 
-.currency-popup {
+.popup table {
+    margin-bottom:0px;
+}
+
+
+    .currency-popup {
     background: transparent linear-gradient(129deg, #BD66FD 0%, #FF4040 100%) 0% 0% no-repeat padding-box;
     width:500px;
 }

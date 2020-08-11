@@ -12,6 +12,7 @@ namespace RCY_Yanbu_Locator
                         "~/Scripts/libs/jquery/jquery-{version}.js",
                         "~/Scripts/libs/jquery/jquery-{version}.slim.min.js",
                         "~/Scripts/libs/jquery/popper.min.js",
+                        "~/Scripts/libs/jquery/nicescroll.min.js",
                         "~/Content/scripts/jqueryi18n/CLDRPluralRuleParser.js",
                         "~/Content/scripts/jqueryi18n/jquery.i18n.js",
                         "~/Content/scripts/jqueryi18n/jquery.i18n.messagestore.js",
