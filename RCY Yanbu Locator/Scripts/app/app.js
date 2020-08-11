@@ -14,8 +14,9 @@
                     row = row.replace(/{{hotelID}}/ig, hotel.Id);
                     row = row.replace(/{{lat}}/ig, hotel.Lat_Y);
                     row = row.replace(/{{lon}}/ig, hotel.Lon_X);
-                    $('#hotel_details_tbl_body').append(row);
+                    $('#hotel_details_tbl_body').append(row);                   
                 });
+                $("#hotel_details_tbl_body").niceScroll();                                
             }
         },
         error: function (err) {

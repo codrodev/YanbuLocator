@@ -1,5 +1,4 @@
-﻿
-/* Set width on the form input elements since they're 100% wide by default */
+﻿/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
@@ -32,6 +31,7 @@ body{
     cursor: pointer;
     padding-top: 2px;
 }
+
 
     .menu .hamburger img {
         width: 14px;
@@ -268,7 +268,7 @@ body{
     transition: visibility 0s, opacity 0.5s linear;
     overflow-y: hidden;
     overflow-x: hidden;
-    max-height: 400px;
+    max-height: 445px;
 }
 
     .popup .title {
