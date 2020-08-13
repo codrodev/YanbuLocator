@@ -120,10 +120,6 @@ function toggleMenu() {
     menuVisible = !menuVisible;
 }
 
-function toggleLayer(e, layer) {
-   
-}
-
 function closePopup(){
     resetPanels();
 }

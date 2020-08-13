@@ -1,4 +1,8 @@
-﻿function onOpenhotelPopup() {
+﻿function initApp() {
+    initMap();
+}
+
+function onOpenhotelPopup() {
     $.get({
         url: baseAPIsURL + 'm_GetHotels',
         dataType: 'json',
