@@ -2,6 +2,13 @@
 var yanbuMapLayer = undefined;
 var initExtent = undefined;
 var mapLayerDetails = undefined;
+var ArcGISDynamicMapServiceLayer;
+var Point;
+var PictureMarkerSymbol;
+var Graphic;
+var SpatialReference;
+var TextSymbol;
+var IdentifyTask, IdentifyParams;
 function initMap() {
     require([
         "dojo/_base/connect",
@@ -10,46 +17,161 @@ function initMap() {
         "dojo/on",
         "esri/Color",
         "esri/map",
+        "esri/graphic",
+        "esri/InfoTemplate",
         "esri/geometry/Extent",
-        "esri/layers/ArcGISTiledMapServiceLayer",
         "esri/layers/ArcGISDynamicMapServiceLayer",
         "esri/geometry/Point",
         "esri/SpatialReference",
-        "dojo/domReady!"], function (connect, dom, parser, on, Color, Map, Extent, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
-            Point, SpatialReference) {
-        parser.parse();
-        //initExtent = new Extent({
-        //    "xmin": 419580.3022800002,
-        //    "ymin": 2654701.434447549,
-        //    "xmax": 420661.2023200004,
-        //    "ymax": 2655088.3304228694,
-        //    "spatialReference": {
-        //        "wkid": 32637
-        //    }
-        //});
+        "esri/symbols/PictureMarkerSymbol",
+        "esri/symbols/TextSymbol",
+        "esri/tasks/IdentifyTask",
+        "esri/tasks/IdentifyParameters",
+        "dojo/_base/array",
+        "dojo/domReady!"], function (connect, dom, parser, on, Color, Map, graphic, InfoTemplate, Extent, ArcGISDynamicMapServiceLayer, Point, SpatialReference, PictureMarkerSymbol, TextSymbol, IdentifyTask, IdentifyParameters, arrayUtils) {
+            parser.parse();
+            //initExtent = new Extent({
+            //    "xmin": 419580.3022800002,
+            //    "ymin": 2654701.434447549,
+            //    "xmax": 420661.2023200004,
+            //    "ymax": 2655088.3304228694,
+            //    "spatialReference": {
+            //        "wkid": 32637
+            //    }
+            //});
 
-        yanbuMap = new Map("map-container", {
-            basemap: "streets-night-vector", // Valid values are: "streets" | "satellite" | "hybrid" | "topo" | "gray" | "dark-gray" | "oceans" | "national-geographic" | "terrain" | "osm" | "dark-gray-vector" | "gray-vector" | "streets-vector" | "streets-night-vector" | "streets-relief-vector" | "streets-navigation-vector" | "topo-vector"
-            //extent: initExtent,
-            logo: false,
-            sliderPosition: "bottom-left",
-            sliderStyle: "small"
+            this.ArcGISDynamicMapServiceLayer = ArcGISDynamicMapServiceLayer;
+            this.Point = Point;
+            this.PictureMarkerSymbol = PictureMarkerSymbol;
+            this.Graphic = graphic;
+            this.SpatialReference = SpatialReference;
+            this.TextSymbol = TextSymbol;
+            //this.IdentifyTask = identifyTask;
+            //this.IdentifyParams = identifyParams;
 
+            var identifyTask, identifyParams;
+            //map creation
+            yanbuMap = new Map("map-container", {
+                basemap: "topo", // Valid values are: "streets" | "satellite" | "hybrid" | "topo" | "gray" | "dark-gray" | "oceans" | "national-geographic" | "terrain" | "osm" | "dark-gray-vector" | "gray-vector" | "streets-vector" | "streets-night-vector" | "streets-relief-vector" | "streets-navigation-vector" | "topo-vector"
+                //extent: initExtent,
+                logo: false,
+                sliderPosition: "bottom-left",
+                sliderStyle: "small"
+
+            });
+
+            dojo.connect(yanbuMap, "onLoad", function mapReady() {
+                setTimeout(function () {
+                    console.log('map ready');
+                    // map.setLevel(12);
+                    yanbuMap.centerAndZoom(new Point(38.206150, 24.000854), 14);
+                    getMapLayerDetails().then(function (mapLayerDetails) {
+                        console.log(mapLayerDetails);
+                        yanbuMapLayer = new ArcGISDynamicMapServiceLayer(mapLayerDetails.MapUrl, {});
+                        yanbuMapLayer.setVisibleLayers([6, 7]); //haii and harah boundary visible
+                        yanbuMap.addLayer(yanbuMapLayer);
+                        fillMapLayersDD(mapLayerDetails.Layers, yanbuMapLayer.visibleLayers);
+
+                        yanbuMap.on("click", executeIdentifyTask);
+                        identifyTask = new IdentifyTask(mapLayerDetails.MapUrl);
+
+                        identifyParams = new IdentifyParameters();
+                        identifyParams.tolerance = 3;
+                        identifyParams.returnGeometry = true;
+                        //identifyParams.layerIds = [1, 2, 3, 4, 5, 6, 7];
+                        identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
+                        identifyParams.width = yanbuMap.width;
+                        identifyParams.height = yanbuMap.height;
+                    });
+                }, 100);
+            });
+
+            function executeIdentifyTask(event) {
+                identifyParams.geometry = event.mapPoint;
+                identifyParams.mapExtent = yanbuMap.extent;
+
+                var deferred = identifyTask
+                    .execute(identifyParams)
+                    .addCallback(function (response) {
+                        // response is an array of identify result objects
+                        // Let's return an array of features.
+                        return arrayUtils.map(response, function (result) {
+                            var feature = result.feature;
+                            var layerName = result.layerName;
+                            var layerId = result.layerId;
+
+                            feature.attributes.layerName = layerName;
+                            feature.attributes.layerId = layerId;
+                            if (layerId == 1) { //Landmarks
+                                var template = new InfoTemplate($.i18n('Landmarks'),
+                                    "<b>MADHKAL</b>: ${MADHKAL}<br/>"
+                                    + "<b>Type</b>: ${Type}<br/>"
+                                    + "<b>LAND LABEL </b>: ${LAND LABEL}<br/>"
+
+                                );
+                                feature.setInfoTemplate(template);
+                            } else if (layerId == 2) { //Bus Route
+                                var template = new InfoTemplate($.i18n('Bus_Route'),
+                                    "<b>Route Name</b>: ${RouteNameEn}<br/>"
+                                    + "<b>Origin</b>: ${Origine}<br/>"
+                                    + "<b>Destination</b>: ${Destination}<br/>"
+
+                                );
+                                feature.setInfoTemplate(template);
+                            } else if (layerId == 3) { //Buildings
+                                var template = new InfoTemplate($.i18n('Buildings'),
+                                    "<b>Building Name</b>: ${BLDG_NAME}<br/>"
+                                    + "<b>LANDUSE TYPE</b>: ${LANDUSE_TYPE}<br/>"
+                                    + "<b>STATUS</b>: ${STATUS}<br/>"
+
+                                );
+                                feature.setInfoTemplate(template);
+                            } else if (layerId == 4) { //LOT
+                                var template = new InfoTemplate($.i18n('LOT'),
+                                    "<b>NAME</b>: ${NAME}<br/>"
+                                    + "<b>BLOCK_NO</b>: ${BLOCK_NO}<br/>"
+                                    + "<b>STATUS</b>: ${STATUS}<br/>"
+
+                                );
+                                feature.setInfoTemplate(template);
+                            } else if (layerId == 5) {//Block 
+                                var template = new InfoTemplate($.i18n('Block'),
+                                    "<b>MANTEKA NO</b>: ${MANTEKA_NO}<br/>"
+                                    + "<b>BLOCK_NO</b>: ${BLOCK_NO}<br/>"
+                                    + "<b>STATUS</b>: ${STATUS}<br/>"
+
+                                );
+                                feature.setInfoTemplate(template);
+                            } else if (layerId == 6) { //HaiiBoundary 
+                                var template = new InfoTemplate($.i18n('HaiiBoundary'),
+                                    "<b>MANTEKA NO</b>: ${MANTEKA_NO}<br/>"
+                                    + "<b>HAII NO</b>: ${HAII_NO}<br/>"
+                                    + "<b>HAII NAME</b>: ${HAII_NAME}<br/>"
+
+                                );
+                                feature.setInfoTemplate(template);
+                            } else if (layerId == 7) { //HarahBoundary
+                                var template = new InfoTemplate($.i18n('HarahBoundary'),
+                                    "<b>MANTEKA NO</b>: ${MANTEKA_NO}<br/>"
+                                    + "<b>HAII NO</b>: ${HAII_NO}<br/>"
+                                    + "<b>HARAH NO</b>: ${HARAH_NO}<br/>"
+
+                                );
+                                feature.setInfoTemplate(template);
+                            }
+                            
+                            return feature;
+                        });
+                    });
+
+                yanbuMap.infoWindow.setFeatures([deferred]);
+                yanbuMap.infoWindow.show(event.mapPoint);
+            }
         });
-
-        dojo.connect(yanbuMap, "onLoad", function mapReady() {
-            setTimeout(function () {
-                console.log('map ready');
-                // map.setLevel(12);
-                yanbuMap.centerAndZoom(new esri.geometry.Point(38.206150, 24.020854), 12);
-                getMapLayerDetails();
-            }, 100);
-        });
-    });
 }
 
 function toggleLayer(cb, layer, Id) {
-    console.log(cb.checked, layer, Id);
+    //console.log(cb.checked, layer, Id);
     var visibleLayers = yanbuMapLayer.visibleLayers;
     if (cb.checked) {
         if (visibleLayers.indexOf(Id) == -1) {
@@ -66,39 +188,56 @@ function toggleLayer(cb, layer, Id) {
 
 
 function getMapLayerDetails() {
-    $.get({
-        url: baseAPIsURL + 'm_GetYanbuLocatorMapDetails',
-        dataType: 'json',
-        contentType: "application/json",
-        success: function (response) {
-            if (typeof response == "object") {
-                mapLayerDetails = response;
-                console.log(mapLayerDetails);
+    return $.when(
+        mapLayerDetails ||
+        $.get({
+            url: baseAPIsURL + 'm_GetYanbuLocatorMapDetails',
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (response) {
+                if (typeof response == "object") {
+                    mapLayerDetails = response;
+                }
+            },
+            error: function (err) {
 
-                yanbuMapLayer = new esri.layers.ArcGISDynamicMapServiceLayer(mapLayerDetails.MapUrl, {});
-                yanbuMapLayer.setVisibleLayers([]);
-                yanbuMap.addLayer(yanbuMapLayer);
-                fillMapLayersDD(mapLayerDetails.Layers);
             }
-        },
-        error: function (err) {
-
-        }
-    });
+        })
+    );
 }
 
-function fillMapLayersDD(arr) {
+function fillMapLayersDD(layersArr, visibleLayers) {
+    var iconBaseUrl = "/Content/images/geom/";
     $('#map-layers-list-dd').html('');
     var tempDDEntry = $.trim($('#map-layer-dd-entry').html());
-    arr.forEach(function (obj) {
+    layersArr.forEach(function (obj) {
         //console.log(obj);
         var row = tempDDEntry.replace(/{{layerName}}/ig, obj.Name);
         row = row.replace(/{{Id}}/ig, obj.Id);
-        //row = row.replace(/{{iconUrl}}/ig, hotel.Address);
+        if (obj.FeatureType == META.esriGeometryPoint) {
+            row = row.replace(/{{iconUrl}}/ig, iconBaseUrl + "point.png");
+        } else if (obj.FeatureType == META.esriGeometryPolyline) {
+            row = row.replace(/{{iconUrl}}/ig, iconBaseUrl + "line.png");
+        } else {
+            row = row.replace(/{{iconUrl}}/ig, iconBaseUrl + "polygon.png");
+        }
+        if (visibleLayers.indexOf(obj.Id) != -1) {
+            row = row.replace(/{{checked}}/ig, "checked");
+        } else {
+            row = row.replace(/{{checked}}/ig, "");
+        }
         $('#map-layers-list-dd').append(row);
     });
 }
 
-function onHotelClick(Id, lat, lon) {
+function onHotelClick(Id, lat, lon, name) {
     console.log(Id, lat, lon);
+    yanbuMap.graphics.clear();
+    var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32);
+    var point = new Point(lon, lat, new SpatialReference({ wkid: 4326 }));
+    var icon = new Graphic(point, pictureMarkerSymbol);
+    var label = new Graphic(point, new TextSymbol(name).setOffset(0, 15));
+    yanbuMap.graphics.add(icon);
+    yanbuMap.graphics.add(label);
+    yanbuMap.centerAndZoom(point, 13);
 }

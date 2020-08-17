@@ -11,5 +11,12 @@
   "Name": "Name",
   "Contact": "Contact",
   "Address": "Address",
-  "View": "View"
+  "View": "View",
+  "Landmarks": "Landmarks",
+  "Bus_Route": "Bus Route",
+  "Buildings": "Buildings",
+  "LOT": "LOT",
+  "Block": "Block",
+  "HaiiBoundary": "HaiiBoundary",
+  "HarahBoundary": "HarahBoundary"
 }

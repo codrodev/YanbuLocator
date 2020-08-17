@@ -514,19 +514,19 @@
             <td>{{hotelname}}</td>
             <td>{{contact}}</td>
             <td>{{address}}</td>
-            <td><button class="viewbtn" type="button" onclick="onHotelClick({{hotelID}}, {{lat}}, {{lon}})">Map View</button></td>
+            <td><button class="viewbtn" type="button" onclick="onHotelClick({{hotelID}}, {{lat}}, {{lon}}, '{{hotelname}}' )">Map View</button></td>
         </tr>
     </script>
 
     <script id="map-layer-dd-entry" type="text/template">
         <li>
-            @*<div class="icon"><img src="{{iconUrl}}" /></div>*@
+            <div class="icon"><img src="{{iconUrl}}" /></div>
             <div class="title">{{layerName}}</div>
             <div class="toggle-btn">
                 <div class="toggle-button-cover">
                     <div class="button-cover">
                         <div class="button r" id="button-1">
-                            <input id="{{layerName}}CB" type="checkbox" class="checkbox" onchange="toggleLayer(this, '{{layerName}}', {{Id}})">
+                            <input {{checked}} id="{{layerName}}CB" type="checkbox" class="checkbox" onchange="toggleLayer(this, '{{layerName}}', {{Id}})">
                             <div class="knobs"></div>
                             <div class="layer"></div>
                         </div>
