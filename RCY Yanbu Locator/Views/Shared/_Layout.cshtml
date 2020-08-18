@@ -20,45 +20,47 @@
         <div class="container">
             <div class="navbar-header">
                 <div class="logo"><img src="~/Content/images/logo-yl-web.png" /></div>
-                @*<ul class="">
-                    <li>
-                        @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)
-                        <a href="#" data-locale="en">English</a>
-                    </li>
-                    <li>
-                        @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
-                        <a href="#" data-locale="ar">Arabic</a>
-                    </li>
-                    </ul>
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
 
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                @*<ul class="">
+            <li>
+                @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)
+                <a href="#" data-locale="en">English</a>
+            </li>
+            <li>
+                @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
+                <a href="#" data-locale="ar">Arabic</a>
+            </li>
+            </ul>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
+            <div class="locale-switcher" ><img src="~/Content/images/langswitch.png" /></div>
             @*<div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    </ul>
-                </div>*@
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+            </ul>
+        </div>*@
         </div>
     </div>
     <div class="menu">
         <div class="hamburger" onclick="toggleMenu()"><img src="~/Content/images/menu.svg" /></div>
         <div class="menu-items">
             <ul>
-                <li onclick="togglePanel('hotel')"><img src="~/Content/images/hotel.svg" /></li>
-                <li onclick="togglePanel('busroute')"><img src="~/Content/images/electric-bus.svg" /></li>
-                <li onclick="togglePanel('salah')"><img src="~/Content/images/mosque.svg" /></li>
-                <li onclick="togglePanel('taxi')"><img src="~/Content/images/taxi.svg" /></li>
-                <li onclick="togglePanel('weather')"><img src="~/Content/images/jotta-cloud.svg" /></li>
-                <li onclick="togglePanel('rules')"><img src="~/Content/images/rules.svg" /></li>
-                <li onclick="togglePanel('history')"><img src="~/Content/images/factory.svg" /></li>
-                <li><img src="~/Content/images/map.svg" /></li>
+                <li onclick="togglePanel('hotel')" id="hotel"><img src="~/Content/images/hotel.svg" /></li>
+                <li onclick="togglePanel('busroute')" id="busroute"><img src="~/Content/images/electric-bus.svg" /></li>
+                <li onclick="togglePanel('salah')" id="salah"><img src="~/Content/images/mosque.svg" /></li>
+                <li onclick="togglePanel('taxi')" id="taxi"><img src="~/Content/images/taxi.svg" /></li>
+                <li onclick="togglePanel('weather')" id="weather"><img src="~/Content/images/jotta-cloud.svg" /></li>
+                <li onclick="togglePanel('rules')" id="rules"><img src="~/Content/images/rules.svg" /></li>
+                <li onclick="togglePanel('history')" id="history"><img src="~/Content/images/factory.svg" /></li>
+                <li onclick="togglePanel('news')" id="news"><img src="~/Content/images/map.svg" /></li>
                 <li><img src="~/Content/images/alarm.svg" /></li>
-                <li onclick="togglePanel('currency')"><img src="~/Content/images/exchange.svg" /></li>
+                <li onclick="togglePanel('currency')" id="currency"><img src="~/Content/images/exchange.svg" /></li>
             </ul>
         </div>
     </div>

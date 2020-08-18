@@ -11,5 +11,14 @@
   "Name": "Name",
   "Contact": "Contact",
   "Address": "Address",
-  "View": "View"
+  "View": "View",
+  "hotel": "Hotel",
+  "busroute": "Bus Route",
+  "salah": "Salah",
+  "taxi": "Taxi",
+  "weather": "Weather",
+  "rules": "Rules",
+  "history": "History",
+  "news": "News",
+  "currency": "Currency"
 }

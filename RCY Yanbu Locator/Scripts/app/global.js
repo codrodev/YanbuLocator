@@ -6,17 +6,27 @@ jQuery(function ($) {
         'en': '/Content/scripts/i18n/en.json',
         'ar': '/Content/scripts/i18n/ar.json'
     }).done(function () {
-        $('html').i18n();
+        $('html').i18n();      
 
-        $('.locale-switcher').on('click', 'a', function (e) {
+        $('.locale-switcher').on('click', function (e) {            
             e.preventDefault();
-            $.i18n().locale = $(this).data('locale');
-            console.log($(this).data('locale'));
+            console.log(localStorage.getItem('locale'));
+            var locale = localStorage.getItem('locale') == null ? 'en' : localStorage.getItem('locale');
+            locale = locale == 'en' ? 'ar' : 'en';
+            localStorage.setItem('locale', locale);
+            $.i18n().locale = locale;
+            console.log(locale);
             $('html').i18n();
-        });
+
+            setTooltips();
+        });        
+
+        setTooltips();
     });
 
-    $(".popup .content").niceScroll();
+    $(".popup .content").niceScroll();    
+
+   
 });
 
 var menuVisible = false;
@@ -122,4 +132,25 @@ function toggleMenu() {
 
 function closePopup(){
     resetPanels();
+}
+
+function setTooltips() {    
+    $("#hotel").tooltip({ title: $.i18n("hotel"), placement: "top", trigger: "hover" });
+    $("#hotel").attr('data-original-title', $.i18n("hotel"));
+    $("#busroute").tooltip({ title: $.i18n("busroute"), placement: "top", trigger: "hover" });
+    $("#busroute").attr('data-original-title', $.i18n("busroute"));
+    $("#salah").tooltip({ title: $.i18n("salah"), placement: "top", trigger: "hover" });
+    $("#salah").attr('data-original-title', $.i18n("salah"));
+    $("#taxi").tooltip({ title: $.i18n("taxi"), placement: "top", trigger: "hover" });
+    $("#taxi").attr('data-original-title', $.i18n("taxi"));
+    $("#weather").tooltip({ title: $.i18n("weather"), placement: "top", trigger: "hover" });
+    $("#weather").attr('data-original-title', $.i18n("weather"));
+    $("#rules").tooltip({ title: $.i18n("rules"), placement: "top", trigger: "hover" });
+    $("#rules").attr('data-original-title', $.i18n("rules"));
+    $("#history").tooltip({ title: $.i18n("history"), placement: "top", trigger: "hover" });
+    $("#history").attr('data-original-title', $.i18n("history"));
+    $("#news").tooltip({ title: $.i18n("news"), placement: "top", trigger: "hover" });
+    $("#news").attr('data-original-title', $.i18n("news"));
+    $("#currency").tooltip({ title: $.i18n("currency"), placement: "top", trigger: "hover" });
+    $("#currency").attr('data-original-title', $.i18n("currency"));
 }
