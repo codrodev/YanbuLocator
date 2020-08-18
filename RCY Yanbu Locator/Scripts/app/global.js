@@ -1,4 +1,8 @@
-
+var META = {
+    esriGeometryPoint: "esriGeometryPoint",
+    esriGeometryPolyline: "esriGeometryPolyline",
+    esriGeometryPolygon: "esriGeometryPolygon"
+}
 
 jQuery(function ($) {
     
@@ -96,6 +100,7 @@ function togglePanel(pnl) {
 }
 
 function resetPanels() {
+    yanbuMap.graphics.clear();
     weatherPnlVisible = false;
     currencyPnlVisible = false;
     busroutePnlVisible = false;
@@ -130,7 +135,7 @@ function toggleMenu() {
     menuVisible = !menuVisible;
 }
 
-function closePopup(){
+function closePopup() {
     resetPanels();
 }
 

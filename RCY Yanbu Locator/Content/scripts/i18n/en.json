@@ -12,6 +12,13 @@
   "Contact": "Contact",
   "Address": "Address",
   "View": "View",
+  "Landmarks": "Landmarks",
+  "Bus_Route": "Bus Route",
+  "Buildings": "Buildings",
+  "LOT": "LOT",
+  "Block": "Block",
+  "HaiiBoundary": "HaiiBoundary",
+  "HarahBoundary": "HarahBoundary"
   "hotel": "Hotel",
   "busroute": "Bus Route",
   "salah": "Salah",
