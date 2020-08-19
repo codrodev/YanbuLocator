@@ -12,18 +12,14 @@ jQuery(function ($) {
     }).done(function () {
         $('html').i18n();      
 
-        $('.locale-switcher').on('click', function (e) {            
+        $('.locale-switcher').on('click', 'a', function (e) {
             e.preventDefault();
-            console.log(localStorage.getItem('locale'));
-            var locale = localStorage.getItem('locale') == null ? 'en' : localStorage.getItem('locale');
-            locale = locale == 'en' ? 'ar' : 'en';
-            localStorage.setItem('locale', locale);
-            $.i18n().locale = locale;
-            console.log(locale);
+            $.i18n().locale = $(this).data('locale');
+            console.log($(this).data('locale'));
             $('html').i18n();
 
             setTooltips();
-        });        
+        });
 
         setTooltips();
     });

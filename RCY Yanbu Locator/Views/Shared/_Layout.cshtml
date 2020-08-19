@@ -1,6 +1,7 @@
 ﻿@{
     var lang = @HttpContext.Current.Request.Cookies["lang"].Value;
     var dir = lang == "en" ? "ltr" : "rtl";
+    var langRev = lang == "en"?"ar":"en";
 }
 
 <!DOCTYPE html>
@@ -22,22 +23,22 @@
                 <div class="logo"><img src="~/Content/images/logo-yl-web.png" /></div>
 
                 @*<ul class="">
-            <li>
-                @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)
-                <a href="#" data-locale="en">English</a>
-            </li>
-            <li>
-                @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
-                <a href="#" data-locale="ar">Arabic</a>
-            </li>
-            </ul>*@
+                    <li>
+                        @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)
+                        <a href="#" data-locale="en">English</a>
+                    </li>
+                    <li>
+                        @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
+                        <a href="#" data-locale="ar">Arabic</a>
+                    </li>
+                </ul>*@
             </div>
-            <div class="locale-switcher" ><img src="~/Content/images/langswitch.png" /></div>
+            <div><a href="/Home/ChangeCulture?lang=@langRev"><img src="~/Content/images/langswitch.png" /></a></div>
             @*<div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-            </ul>
-        </div>*@
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                </ul>
+            </div>*@
         </div>
     </div>
     <div class="menu">
@@ -65,66 +66,67 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <ul class="layers-list" id="map-layers-list-dd">
-                    @*<li>
-                            <div class="icon"><img src="~/Content/images/bank.svg" /></div>
-                            <div class="title">Bank</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(this,'bank')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
+                    @*
+                    <li>
+                        <div class="icon"><img src="~/Content/images/bank.svg" /></div>
+                        <div class="title">Bank</div>
+                        <div class="toggle-btn">
+                            <div class="toggle-button-cover">
+                                <div class="button-cover">
+                                    <div class="button r" id="button-1">
+                                        <input type="checkbox" class="checkbox" onchange="toggleLayer(this,'bank')">
+                                        <div class="knobs"></div>
+                                        <div class="layer"></div>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="icon"><img src="~/Content/images/sleep.svg" /></div>
-                            <div class="title">Hotels</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'hotel')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon"><img src="~/Content/images/sleep.svg" /></div>
+                        <div class="title">Hotels</div>
+                        <div class="toggle-btn">
+                            <div class="toggle-button-cover">
+                                <div class="button-cover">
+                                    <div class="button r" id="button-1">
+                                        <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'hotel')">
+                                        <div class="knobs"></div>
+                                        <div class="layer"></div>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="icon"><img src="~/Content/images/fuel.svg" /></div>
-                            <div class="title">Fuel Station</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'fuel')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon"><img src="~/Content/images/fuel.svg" /></div>
+                        <div class="title">Fuel Station</div>
+                        <div class="toggle-btn">
+                            <div class="toggle-button-cover">
+                                <div class="button-cover">
+                                    <div class="button r" id="button-1">
+                                        <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'fuel')">
+                                        <div class="knobs"></div>
+                                        <div class="layer"></div>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="icon"><img src="~/Content/images/XMLID_125_.svg" /></div>
-                            <div class="title">Hospitals</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'hospitals')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon"><img src="~/Content/images/XMLID_125_.svg" /></div>
+                        <div class="title">Hospitals</div>
+                        <div class="toggle-btn">
+                            <div class="toggle-button-cover">
+                                <div class="button-cover">
+                                    <div class="button r" id="button-1">
+                                        <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'hospitals')">
+                                        <div class="knobs"></div>
+                                        <div class="layer"></div>
                                     </div>
                                 </div>
                             </div>
-                        </li>*@
+                        </div>
+                    </li>*@
                 </ul>
             </div>
         </div>
@@ -352,7 +354,7 @@
                     <div class="temperature" id="weather_descriptions"></div>
                 </div>
                 <div class="col-3 degtempimage" id="weather_icons">
-                    
+
                 </div>
             </div>
             <div class="row">
