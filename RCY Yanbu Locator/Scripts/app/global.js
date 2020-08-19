@@ -51,10 +51,6 @@ function togglePanel(pnl) {
     resetPanels();
 
     switch (pnl) {
-        case 'bank':
-            bankPnlVisible = true;
-            $('.bank-popup').addClass('d-block');
-            break;
         case 'hotel':            
             hotelPnlVisible = true;
             $('.hotel-popup').addClass('d-block');
@@ -63,10 +59,6 @@ function togglePanel(pnl) {
         case 'fuel':
             fuelPnlVisible = true;
             $('.fuel-popup').addClass('d-block');
-            break;
-        case 'hospital':
-            hospitalPnlVisible = true;
-            $('.hospital-popup').addClass('d-block');
             break;
         case 'salah':
             salahPnlVisible = true;
@@ -148,8 +140,8 @@ function setTooltips() {
     $("#hotel").attr('data-original-title', $.i18n("hotel"));
     $("#busroute").tooltip({ title: $.i18n("busroute"), placement: "top", trigger: "hover" });
     $("#busroute").attr('data-original-title', $.i18n("busroute"));
-    $("#salah").tooltip({ title: $.i18n("salah"), placement: "top", trigger: "hover" });
-    $("#salah").attr('data-original-title', $.i18n("salah"));
+    $("#salah").tooltip({ title: $.i18n("Salah_Timings"), placement: "top", trigger: "hover" });
+    $("#salah").attr('data-original-title', $.i18n("Salah_Timings"));
     $("#taxi").tooltip({ title: $.i18n("taxi"), placement: "top", trigger: "hover" });
     $("#taxi").attr('data-original-title', $.i18n("taxi"));
     $("#weather").tooltip({ title: $.i18n("weather"), placement: "top", trigger: "hover" });
@@ -162,6 +154,8 @@ function setTooltips() {
     $("#news").attr('data-original-title', $.i18n("news"));
     $("#currency").tooltip({ title: $.i18n("currency"), placement: "top", trigger: "hover" });
     $("#currency").attr('data-original-title', $.i18n("currency"));
+    $("#emergency").tooltip({ title: $.i18n("emergency"), placement: "top", trigger: "hover" });
+    $("#emergency").attr('data-original-title', $.i18n("emergency"));
 }
 
 

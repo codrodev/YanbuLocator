@@ -37,13 +37,14 @@
   "visibility": "Visibility",
   "cloud": "Cloud",
   "City_Taxi": "City Taxi",
-  "hotel": "Hotel",
+  "hotel": "Hotels",
   "busroute": "Bus Route",
   "salah": "Salah",
   "taxi": "Taxi",
   "weather": "Weather",
-  "rules": "Rules",
+  "rules": "Rules & Regulations",
   "history": "History",
   "news": "News",
-  "currency": "Currency"
+  "currency": "Currency",
+  "emergency": "Emergency Services"
 }

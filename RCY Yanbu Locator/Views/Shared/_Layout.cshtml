@@ -30,14 +30,7 @@
                 @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
                 <a href="#" data-locale="ar">Arabic</a>
             </li>
-            </ul>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </ul>*@
             </div>
             <div class="locale-switcher" ><img src="~/Content/images/langswitch.png" /></div>
             @*<div class="navbar-collapse collapse">
@@ -59,7 +52,7 @@
                 <li onclick="togglePanel('rules')" id="rules"><img src="~/Content/images/rules.svg" /></li>
                 <li onclick="togglePanel('history')" id="history"><img src="~/Content/images/factory.svg" /></li>
                 <li onclick="togglePanel('news')" id="news"><img src="~/Content/images/map.svg" /></li>
-                <li><img src="~/Content/images/alarm.svg" /></li>
+                <li onclick="togglePanel('emergency')" id="emergency"><img src="~/Content/images/alarm.svg" /></li>
                 <li onclick="togglePanel('currency')" id="currency"><img src="~/Content/images/exchange.svg" /></li>
             </ul>
         </div>
