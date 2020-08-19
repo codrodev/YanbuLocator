@@ -1,4 +1,4 @@
-﻿{
+{
   "@metadata": {
     "authors": [
       "Umair"
@@ -36,5 +36,14 @@
   "wind": "Wind",
   "visibility": "Visibility",
   "cloud": "Cloud",
-  "City_Taxi": "City Taxi"
+  "City_Taxi": "City Taxi",
+  "hotel": "Hotel",
+  "busroute": "Bus Route",
+  "salah": "Salah",
+  "taxi": "Taxi",
+  "weather": "Weather",
+  "rules": "Rules",
+  "history": "History",
+  "news": "News",
+  "currency": "Currency"
 }

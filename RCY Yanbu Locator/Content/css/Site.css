@@ -528,3 +528,7 @@ span.close-btn {
     display:flex;
     align-items:center;
 }
+
+.locale-switcher {
+    cursor: pointer;
+}

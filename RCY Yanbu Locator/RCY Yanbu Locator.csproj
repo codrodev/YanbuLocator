@@ -191,6 +191,7 @@
     <Content Include="Content\images\islam.png" />
     <Content Include="Content\images\islam.svg" />
     <Content Include="Content\images\jotta-cloud.svg" />
+    <Content Include="Content\images\langswitch.png" />
     <Content Include="Content\images\logo-yl-web.png" />
     <Content Include="Content\images\map.svg" />
     <Content Include="Content\images\menu.svg" />
