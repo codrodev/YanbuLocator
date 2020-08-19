@@ -1,10 +1,15 @@
 ﻿var salahTimings;
 var hotelsArray;
+var weatherInfo;
+var taxisArray;
+var busRouteArray;
+
 function initApp() {
     initMap();
 }
 
-function fetchHotelsArray() {
+function fetchHotelsArray(refresh) {
+    if (refresh) hotelsArray = undefined;
     return $.when(
         hotelsArray ||
         $.get({
@@ -23,8 +28,8 @@ function fetchHotelsArray() {
     );
 }
 
-function onOpenhotelPopup() {
-    fetchHotelsArray().then(function (hotelsArray) {
+function onOpenhotelPopup(refresh) {
+    fetchHotelsArray(refresh).then(function (hotelsArray) {
         $('#hotel_details_tbl_body').html('');
         var tempHotelRow = $.trim($('#hotel_row').html());
         hotelsArray.forEach(function (hotel) {
@@ -39,31 +44,132 @@ function onOpenhotelPopup() {
         });
         $("#hotel_details_tbl_body").niceScroll();
     });
-    
+
 }
 
-function fetchSalahTimings() {
-    return $.when(
-        salahTimings ||
+function fetchSalahTimings(refresh) {
+    if (refresh) salahTimings = undefined;
+    var deferred = new $.Deferred();
+
+    salahTimings ? deferred.resolve(salahTimings) :
         $.get({
-            url: "https://api.pray.zone/v2/times/this_week.json?city=mecca",
+            url: "https://api.pray.zone/v2/times/today.json?city=mecca",
             dataType: 'json',
-            contentType: "application/json",
+
             success: function (response) {
                 if (typeof response == "object" && response.code == 200) {
                     salahTimings = response.results.datetime[0].times;
-                    console.log(salahTimings);
+                    deferred.resolve(salahTimings);
                 }
             },
             error: function (err) {
 
             }
         })
+    return deferred.promise();
+}
+
+function onOpenSalahTimingsPopup() {
+    fetchSalahTimings().then(function (salahTimings) {
+        //console.log(salahTimings);
+        Object.keys(salahTimings).forEach(function (key) {
+            $('#' + key).html(salahTimings[key]);
+        })
+    });
+}
+
+function fetchWeatherInfo(refresh) {
+    if (refresh) weatherInfo = undefined;
+    var deferred = new $.Deferred();
+
+    weatherInfo ? deferred.resolve(weatherInfo) :
+        $.get({
+            url: " http://api.weatherstack.com/current?access_key=46acd15f2270726d9c5541bb605ff477&query=Yanbu",
+            dataType: 'json',
+            success: function (response) {
+                if (typeof response == "object" && response.current) {
+                    weatherInfo = response.current;
+                    deferred.resolve(weatherInfo);
+                }
+            },
+            error: function (err) {
+
+            }
+        })
+
+    return deferred.promise();
+}
+
+function onOpenWeatherPopup(refresh) {
+    fetchWeatherInfo(refresh).then(function (weatherInfo) {
+        //console.log(weatherInfo);
+
+        $("#temperature").html(weatherInfo.temperature + "<span>&#176</span>C");
+        $("#weather_descriptions").html(weatherInfo.weather_descriptions.toString());
+        $("#weather_icons").html('<img src="' + weatherInfo.weather_icons[0] + '" />');
+
+        $("#feelslike").html(weatherInfo.feelslike);
+        $("#pressure").html(weatherInfo.pressure);
+        $("#humidity").html(weatherInfo.humidity);
+        $("#wind").html(weatherInfo.wind_speed + "," + weatherInfo.wind_dir);
+        $("#visibility").html(weatherInfo.visibility);
+        $("#cloudcover").html(weatherInfo.cloudcover);
+    });
+}
+
+function fetchTaxisArray(refresh) {
+    if (refresh) taxisArray = undefined;
+    return $.when(
+        taxisArray ||
+        $.get({
+            url: baseAPIsURL + "m_GetAllTaxis",
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (response) {
+                if (typeof response == "object" && response.length) {
+                    taxisArray = response;
+                }
+            },
+            error: function (err) { }
+        })
     );
 }
 
-function onOpenSalahTimings() {
-    if (!salahTimings) {
+function onOpenTaxisPopup(refresh) {
+    fetchTaxisArray(refresh).then(function (taxisArray) {
+        //console.log(taxisArray);
+        $('#taxi_tbl_body').html('');
+        taxisArray.forEach(function (taxi) {
+            var row = "<tr>"
+                + "<td>" + taxi.SERVICE_NAME + "</td>"
+                + "<td>" + taxi.PHONE + "</td>"
+                + "</tr>";
+            $('#taxi_tbl_body').append(row);
+        });
+        $("#taxi_tbl_body").niceScroll();
+    });
+}
 
-    }
+function fetchBusRouteArray(refresh) {
+    if (refresh) busRouteArray = undefined;
+    return $.when(
+        busRouteArray ||
+        $.get({
+            url: baseAPIsURL + "m_BusRouteDetails",
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (response) {
+                if (typeof response == "object" && response.length) {
+                    busRouteArray = response;
+                }
+            },
+            error: function (err) { }
+        })
+    );
+}
+
+function onOpenBusRoutePopup(refresh) {
+    fetchBusRouteArray(refresh).then(function (busRouteArray) {
+        console.log(busRouteArray);
+    });
 }

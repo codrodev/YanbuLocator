@@ -61,10 +61,12 @@ function togglePanel(pnl) {
         case 'salah':
             salahPnlVisible = true;
             $('.salah-popup').addClass('d-block');
+            onOpenSalahTimingsPopup();
             break;
         case 'busroute':
             busroutePnlVisible = true;
             $('.busroute-popup').addClass('d-block');
+            onOpenBusRoutePopup();
             break;
         case 'currency':
             currencyPnlVisible = true;
@@ -73,10 +75,12 @@ function togglePanel(pnl) {
         case 'weather':
             weatherPnlVisible = true;
             $('.weather-popup').addClass('d-block');
+            onOpenWeatherPopup();
             break;
         case 'taxi':
             taxiPnlVisible = true;
             $('.taxi-popup').addClass('d-block');
+            onOpenTaxisPopup();
             break;
         case 'rules':
             rulesPnlVisible = true;
@@ -128,3 +132,12 @@ function toggleMenu() {
 function closePopup() {
     resetPanels();
 }
+
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        console.log(settings.url, settings.data);
+    },
+    complete: function (xhr, status) {
+        console.log(status);
+    }
+});

@@ -161,63 +161,63 @@
 
     <div class="popup salah-popup">
         <div class="title">
-            Salah Timings
+            <span data-i18n="Salah_Timings"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
             <div class="row">
                 <div class="col">
                     <span class="icon"><img src="~/Content/images/clock.svg" /></span>
-                    <span class="salahname">Imsak</span>
-                    <span class="time">4:03am</span>
+                    <span class="salahname" data-i18n="Imsak"></span>
+                    <span class="time" id="Imsak"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <span class="icon"><img src="~/Content/images/sunrise.svg" /></span>
-                    <span class="salahname">Sunrise</span>
-                    <span class="time">4:03am</span>
+                    <span class="salahname" data-i18n="Sunrise"></span>
+                    <span class="time" id="Sunrise"></span>
                 </div>
                 <div class="col-6">
                     <span class="icon"><img src="~/Content/images/sunset.svg" /></span>
-                    <span class="salahname">Sunset</span>
-                    <span class="time">4:03am</span>
+                    <span class="salahname" data-i18n="Sunset"></span>
+                    <span class="time" id="Sunset"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <span class="icon"><img src="~/Content/images/pray.svg" /></span>
-                    <span class="salahname">Sunrise</span>
-                    <span class="time">4:03am</span>
+                    <span class="salahname" data-i18n="Fajr"></span>
+                    <span class="time" id="Fajr"></span>
                 </div>
                 <div class="col-6">
                     <span class="icon"><img src="~/Content/images/pray.svg" /></span>
-                    <span class="salahname">Sunset</span>
-                    <span class="time">4:03am</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
-                    <span class="salahname">Sunrise</span>
-                    <span class="time">4:03am</span>
-                </div>
-                <div class="col-6">
-                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
-                    <span class="salahname">Sunset</span>
-                    <span class="time">4:03am</span>
+                    <span class="salahname" data-i18n="Maghrib"></span>
+                    <span class="time" id="Maghrib"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <span class="icon"><img src="~/Content/images/pray.svg" /></span>
-                    <span class="salahname">Sunrise</span>
-                    <span class="time">4:03am</span>
+                    <span class="salahname" data-i18n="Dhuhr"></span>
+                    <span class="time" id="Dhuhr"></span>
+                </div>
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
+                    <span class="salahname" data-i18n="Isha"></span>
+                    <span class="time" id="Isha"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <span class="icon"><img src="~/Content/images/pray.svg" /></span>
+                    <span class="salahname" data-i18n="Asr"></span>
+                    <span class="time" id="Asr"></span>
                 </div>
                 <div class="col-6">
                     <span class="icon"><img src="~/Content/images/half-moon.svg" /></span>
-                    <span class="salahname">Sunset</span>
-                    <span class="time">4:03am</span>
+                    <span class="salahname" data-i18n="Midnight"></span>
+                    <span class="time" id="Midnight"></span>
                 </div>
             </div>
         </div>
@@ -347,111 +347,71 @@
 
     <div class="popup weather-popup">
         <div class="title">
-            Yanbu Weather
+            <span data-i18n="Yanbu_Weather"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
             <div class="row" style="margin-bottom:20px">
                 <div class="col-3">
-                    <div class="degree">42 C</div>
-                    <div class="temperature">Sunny</div>
+                    <div class="degree" id="temperature"></div>
+                    <div class="temperature" id="weather_descriptions"></div>
                 </div>
-                <div class="col-3 degtempimage">
-                    <img src="~/Content/images/exchange2.svg" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <img src="~/Content/images/exchange2.svg" />
-                    <div>Feels like</div>
-                    <div class="font-weight-bold">42</div>
-                </div>
-                <div class="col-4">
-                    <img src="~/Content/images/exchange2.svg" />
-                    <div>Feels like</div>
-                    <div class="font-weight-bold">42</div>
-                </div>
-                <div class="col-4">
-                    <img src="~/Content/images/exchange2.svg" />
-                    <div>Feels like</div>
-                    <div class="font-weight-bold">42</div>
+                <div class="col-3 degtempimage" id="weather_icons">
+                    
                 </div>
             </div>
             <div class="row">
                 <div class="col-4">
                     <img src="~/Content/images/exchange2.svg" />
-                    <div>Feels like</div>
-                    <div class="font-weight-bold">42</div>
+                    <div data-i18n="feels_like"></div>
+                    <div class="font-weight-bold" id="feelslike"></div>
                 </div>
                 <div class="col-4">
                     <img src="~/Content/images/exchange2.svg" />
-                    <div>Feels like</div>
-                    <div class="font-weight-bold">42</div>
+                    <div data-i18n="pressure"></div>
+                    <div class="font-weight-bold" id="pressure"></div>
                 </div>
                 <div class="col-4">
                     <img src="~/Content/images/exchange2.svg" />
-                    <div>Feels like</div>
-                    <div class="font-weight-bold">42</div>
+                    <div data-i18n="humidity"></div>
+                    <div class="font-weight-bold" id="humidity"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div data-i18n="wind"></div>
+                    <div class="font-weight-bold" id="wind"></div>
+                </div>
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div data-i18n="visibility"></div>
+                    <div class="font-weight-bold" id="visibility"></div>
+                </div>
+                <div class="col-4">
+                    <img src="~/Content/images/exchange2.svg" />
+                    <div data-i18n="cloud"></div>
+                    <div class="font-weight-bold" id="cloudcover"></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="popup taxi-popup">
         <div class="title">
-            City Taxi
+            <span data-i18n="City_Taxi"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <table class="table table-hover table-sm">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Contact</th>
+                    <th data-i18n="Name"></th>
+                    <th data-i18n="Contact"></th>
                 </tr>
             </thead>
         </table>
         <div class="content">
             <table class="table table-hover table-sm">
-                <tbody>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
-                    <tr>
-                        <td>Saif</td>
-                        <td>208302333</td>
-                    </tr>
+                <tbody id="taxi_tbl_body">
                 </tbody>
             </table>
         </div>

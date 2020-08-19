@@ -66,7 +66,7 @@ function initMap() {
                     // map.setLevel(12);
                     yanbuMap.centerAndZoom(new Point(38.206150, 24.000854), 14);
                     getMapLayerDetails().then(function (mapLayerDetails) {
-                        console.log(mapLayerDetails);
+                        //console.log(mapLayerDetails);
                         yanbuMapLayer = new ArcGISDynamicMapServiceLayer(mapLayerDetails.MapUrl, {});
                         yanbuMapLayer.setVisibleLayers([6, 7]); //haii and harah boundary visible
                         yanbuMap.addLayer(yanbuMapLayer);
