@@ -532,3 +532,47 @@ span.close-btn {
 .locale-switcher {
     cursor: pointer;
 }
+
+
+.news-popup {
+    background: transparent linear-gradient(129deg, #26BFF7 0%, #B90202 100%) 0% 0% no-repeat padding-box;
+}
+
+    .news-popup .content {
+        padding: 15px;
+    }
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #807373;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    border-radius: 0px;
+    font-weight: bold;
+    height: 36px;
+    padding: 6px;
+}
+
+.nav-tabs .nav-link {
+    background: #c3c1c1 0% 0% no-repeat padding-box;
+    color: #524e4e;
+    font-weight: bold;
+    border-radius: 0px;
+    border: 1px;
+    height: 36px;
+    padding: 6px;
+}
+
+.news-item img {
+    width: 100%;
+}
+
+.news-item {
+    font-size: .8em;
+    color: white;
+    border-bottom: 1px solid;
+    padding: 15px 0px;
+}
+
+    .news-item h1 {
+        font-size: 1.3em;
+    }
