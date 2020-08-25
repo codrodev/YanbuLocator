@@ -196,6 +196,7 @@
     <Content Include="Content\images\map.svg" />
     <Content Include="Content\images\menu.svg" />
     <Content Include="Content\images\mosque.svg" />
+    <Content Include="Content\images\news-admin.svg" />
     <Content Include="Content\images\pray.svg" />
     <Content Include="Content\images\rules.svg" />
     <Content Include="Content\images\sunrise.svg" />

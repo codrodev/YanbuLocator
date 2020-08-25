@@ -12,24 +12,19 @@ jQuery(function ($) {
     }).done(function () {
         $('html').i18n();      
 
-        $('.locale-switcher').on('click', function (e) {            
+        $('.locale-switcher').on('click', 'a', function (e) {
             e.preventDefault();
-            console.log(localStorage.getItem('locale'));
-            var locale = localStorage.getItem('locale') == null ? 'en' : localStorage.getItem('locale');
-            locale = locale == 'en' ? 'ar' : 'en';
-            localStorage.setItem('locale', locale);
-            $.i18n().locale = locale;
-            console.log(locale);
+            $.i18n().locale = $(this).data('locale');
+            console.log($(this).data('locale'));
             $('html').i18n();
 
             setTooltips();
-        });        
+        });
 
         setTooltips();
     });
 
-    $(".popup .content").niceScroll();    
-    
+    $(".popup .content").niceScroll();        
    
 });
 
@@ -46,6 +41,7 @@ var weatherPnlVisible = false;
 var taxiPnlVisible = false;
 var rulesPnlVisible = false;
 var historyPnlVisible = false;
+var newsPnlVisible = false;
 
 function togglePanel(pnl) {
     resetPanels();
@@ -92,6 +88,10 @@ function togglePanel(pnl) {
             historyPnlVisible = true;
             $('.history-popup').addClass('d-block');
             break;
+        case 'news':
+            newsPnlVisible = true;
+            $('.news-popup').addClass('d-block');
+            break;
     }
 }
 
@@ -109,6 +109,8 @@ function resetPanels() {
     taxiPnlVisible = false;
     rulesPnlVisible = false;
     historyPnlVisible = false;
+    newsPnlVisible = false;
+    $('.news-popup').removeClass('d-block');
     $('.history-popup').removeClass('d-block');
     $('.bank-popup').removeClass('d-block');
     $('.hotel-popup').removeClass('d-block');

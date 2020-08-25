@@ -1,6 +1,7 @@
-﻿@{
+@{
     var lang = @HttpContext.Current.Request.Cookies["lang"].Value;
     var dir = lang == "en" ? "ltr" : "rtl";
+    var langRev = lang == "en"?"ar":"en";
 }
 
 <!DOCTYPE html>
@@ -22,20 +23,22 @@
                 <div class="logo"><img src="~/Content/images/logo-yl-web.png" /></div>
 
                 @*<ul class="">
-            <li>
-                @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)
-            </li>
-            <li>
-                @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
-            </li>
-            </ul>*@
+                    <li>
+                        @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)
+                        <a href="#" data-locale="en">English</a>
+                    </li>
+                    <li>
+                        @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
+                        <a href="#" data-locale="ar">Arabic</a>
+                    </li>
+                </ul>*@
             </div>
-            <div class="locale-switcher" ><img src="~/Content/images/langswitch.png" /></div>
+            <div><a href="/Home/ChangeCulture?lang=@langRev"><img src="~/Content/images/langswitch.png" /></a></div>
             @*<div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-            </ul>
-        </div>*@
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                </ul>
+            </div>*@
         </div>
     </div>
     <div class="menu">
@@ -49,7 +52,7 @@
                 <li onclick="togglePanel('weather')" id="weather"><img src="~/Content/images/jotta-cloud.svg" /></li>
                 <li onclick="togglePanel('rules')" id="rules"><img src="~/Content/images/rules.svg" /></li>
                 <li onclick="togglePanel('history')" id="history"><img src="~/Content/images/factory.svg" /></li>
-                <li onclick="togglePanel('news')" id="news"><img src="~/Content/images/map.svg" /></li>
+                <li onclick="togglePanel('news')" id="news"><img src="~/Content/images/news-admin.svg" /></li>
                 <li onclick="togglePanel('emergency')" id="emergency"><img src="~/Content/images/alarm.svg" /></li>
                 <li onclick="togglePanel('currency')" id="currency"><img src="~/Content/images/exchange.svg" /></li>
             </ul>
@@ -231,7 +234,7 @@
                     <div class="temperature" id="weather_descriptions"></div>
                 </div>
                 <div class="col-3 degtempimage" id="weather_icons">
-                    
+
                 </div>
             </div>
             <div class="row">
@@ -336,6 +339,78 @@
                     The city’s story begins around an oasis of springs some 30 miles inland from the Red Sea coast up the Wadi Al Yanbu, underneath the Al Hijaz (or As-Sarat) mountains. This oasis, known as Yanbu and is located on one of only six passes through Al-Hijaz (the barrier) mountains, which connect Madinah to the Red Sea. The export of dates from the oasis, travelers heading from the coast of Madinah, and the flow of water down the Wadi to the sea all contributed to human settlement around the natural harbor, which became known as Yanbu Al Bahr (Yanbu-on-the-sea).
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="popup news-popup">
+        <div class="title">
+            News & Events
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">News</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Events</a>
+
+                </div>
+            </nav>
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="news-item">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="~/Content/images/Image3.png" />
+                                <div class="datestamp">30 jun 2010 4:07pm</div>
+                            </div>
+                            <div class="col-8">
+                                <h1>News Heading</h1>
+                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="~/Content/images/Image3.png" />
+                                <div class="datestamp">30 jun 2010 4:07pm</div>
+                            </div>
+                            <div class="col-8">
+                                <h1>News Heading</h1>
+                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="news-item">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="~/Content/images/Image3.png" />
+                                <div class="datestamp">30 jun 2010 4:07pm</div>
+                            </div>
+                            <div class="col-8">
+                                <h1>News Heading</h1>
+                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="~/Content/images/Image3.png" />
+                                <div class="datestamp">30 jun 2010 4:07pm</div>
+                            </div>
+                            <div class="col-8">
+                                <h1>News Heading</h1>
+                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
