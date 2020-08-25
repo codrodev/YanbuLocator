@@ -1958,6 +1958,8 @@
     <Content Include="Scripts\libs\jquery\nicescroll.min.js" />
     <Content Include="Scripts\libs\jquery\popper.min.js" />
     <Content Include="Scripts\libs\modernizr-2.8.3.js" />
+    <Content Include="Scripts\libs\pace\pace.css" />
+    <Content Include="Scripts\libs\pace\pace.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

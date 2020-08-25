@@ -13,6 +13,7 @@ namespace RCY_Yanbu_Locator
                         "~/Scripts/libs/jquery/jquery-{version}.slim.min.js",
                         "~/Scripts/libs/jquery/popper.min.js",
                         "~/Scripts/libs/jquery/nicescroll.min.js",
+                        "~/Scripts/libs/pace/pace.js",
                         "~/Content/scripts/jqueryi18n/CLDRPluralRuleParser.js",
                         "~/Content/scripts/jqueryi18n/jquery.i18n.js",
                         "~/Content/scripts/jqueryi18n/jquery.i18n.messagestore.js",
@@ -33,6 +34,7 @@ namespace RCY_Yanbu_Locator
                       "~/Scripts/libs/bootstrap/bootstrap-bundle.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Scripts/libs/pace/pace.css",
                       "~/Content/css/bootstrap/bootstrap.css",
                         "~/Content/css/fontawesome/all.css",
                       "~/Content/css/site.css"));

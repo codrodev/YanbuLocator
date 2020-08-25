@@ -4,11 +4,14 @@ var initExtent = undefined;
 var mapLayerDetails = undefined;
 var ArcGISDynamicMapServiceLayer;
 var Point;
+var Color;
 var PictureMarkerSymbol;
 var Graphic;
 var SpatialReference;
 var TextSymbol;
 var IdentifyTask, IdentifyParams;
+var Polyline;
+var SimpleLineSymbol;
 function initMap() {
     require([
         "dojo/_base/connect",
@@ -22,13 +25,15 @@ function initMap() {
         "esri/geometry/Extent",
         "esri/layers/ArcGISDynamicMapServiceLayer",
         "esri/geometry/Point",
+        "esri/geometry/Polyline",
         "esri/SpatialReference",
         "esri/symbols/PictureMarkerSymbol",
+        "esri/symbols/SimpleLineSymbol",
         "esri/symbols/TextSymbol",
         "esri/tasks/IdentifyTask",
         "esri/tasks/IdentifyParameters",
         "dojo/_base/array",
-        "dojo/domReady!"], function (connect, dom, parser, on, Color, Map, graphic, InfoTemplate, Extent, ArcGISDynamicMapServiceLayer, Point, SpatialReference, PictureMarkerSymbol, TextSymbol, IdentifyTask, IdentifyParameters, arrayUtils) {
+        "dojo/domReady!"], function (connect, dom, parser, on, Color, Map, graphic, InfoTemplate, Extent, ArcGISDynamicMapServiceLayer, Point, Polyline, SpatialReference, PictureMarkerSymbol, SimpleLineSymbol, TextSymbol, IdentifyTask, IdentifyParameters, arrayUtils) {
             parser.parse();
             //initExtent = new Extent({
             //    "xmin": 419580.3022800002,
@@ -40,9 +45,12 @@ function initMap() {
             //    }
             //});
 
+            this.Color = Color;
             this.ArcGISDynamicMapServiceLayer = ArcGISDynamicMapServiceLayer;
             this.Point = Point;
+            this.Polyline = Polyline;
             this.PictureMarkerSymbol = PictureMarkerSymbol;
+            this.SimpleLineSymbol = SimpleLineSymbol;
             this.Graphic = graphic;
             this.SpatialReference = SpatialReference;
             this.TextSymbol = TextSymbol;
@@ -233,11 +241,55 @@ function fillMapLayersDD(layersArr, visibleLayers) {
 function onHotelClick(Id, lat, lon, name) {
     console.log(Id, lat, lon);
     yanbuMap.graphics.clear();
-    var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32);
+    var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32).setOffset(0, 16);
     var point = new Point(lon, lat, new SpatialReference({ wkid: 4326 }));
     var icon = new Graphic(point, pictureMarkerSymbol);
-    var label = new Graphic(point, new TextSymbol(name).setOffset(0, 15));
+    var label = new Graphic(point, new TextSymbol(name).setOffset(0, 32));
     yanbuMap.graphics.add(icon);
     yanbuMap.graphics.add(label);
     yanbuMap.centerAndZoom(point, 13);
+}
+
+function onBusRouteClick(routeID, source, dest) {
+    console.log(routeID);
+    $.get({
+        url: baseAPIsURL + "m_GetBusRouteDetailsById?Id=" + routeID,
+        dataType: 'json',
+        contentType: "application/json",
+        success: function (response) {
+            if (typeof response == "object") {
+                console.log(response);
+                yanbuMap.graphics.clear();
+                var sls = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("#FDAF85"), 4);
+                var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32).setOffset(0, 16);
+
+                var polyline = new Polyline({
+                    "spatialReference": { "wkid": 4326 },
+                    "paths": [response.features[0].geometry.coordinates]
+                });
+                var sourceCoords = response.features[0].geometry.coordinates[0];
+                var destCoords = response.features[0].geometry.coordinates[response.features[0].geometry.coordinates.length - 1];
+
+                var sourcePoint = new Point(sourceCoords[0], sourceCoords[1], new SpatialReference({ wkid: 4326 }));
+                var destPoint = new Point(destCoords[0], destCoords[1], new SpatialReference({ wkid: 4326 }));
+
+                var sourceGraphic = new Graphic(sourcePoint, pictureMarkerSymbol);
+                var destGraphic = new Graphic(destPoint, pictureMarkerSymbol);
+
+                var sourceLabel = new Graphic(sourcePoint, new TextSymbol(source).setOffset(0, 32));
+                var destLabel = new Graphic(destPoint, new TextSymbol(dest).setOffset(0, 32));
+
+                var routeGraphic = new Graphic(polyline, sls);
+
+                yanbuMap.graphics.add(routeGraphic);
+                yanbuMap.graphics.add(sourceGraphic);
+                yanbuMap.graphics.add(destGraphic);
+                yanbuMap.graphics.add(sourceLabel);
+                yanbuMap.graphics.add(destLabel);
+                //yanbuMap.setExtent(polyline.getExtent());
+                yanbuMap.centerAndZoom(polyline.getExtent().getCenter(), 15);
+            }
+        },
+        error: function (err) { }
+    })
 }

@@ -29,7 +29,7 @@ jQuery(function ($) {
     });
 
     $(".popup .content").niceScroll();    
-
+    
    
 });
 
@@ -161,9 +161,13 @@ function setTooltips() {
 
 $.ajaxSetup({
   beforeSend: function (xhr, settings) {
-    console.log(settings.url, settings.data);
+        //console.log(settings.url, settings.data);
+        if (!settings.url.indexOf(".json")) {
+            Pace.start();
+        }
   },
   complete: function (xhr, status) {
-    console.log(status);
+      //console.log(status);
+      Pace.stop();
   }
 });

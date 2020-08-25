@@ -171,5 +171,21 @@ function fetchBusRouteArray(refresh) {
 function onOpenBusRoutePopup(refresh) {
     fetchBusRouteArray(refresh).then(function (busRouteArray) {
         console.log(busRouteArray);
+        $('#accordionExample').html('');
+        var temp = $.trim($('#bus_route_entry').html());
+        busRouteArray.forEach(function (obj) {
+            var row = temp.replace(/{{routeNmae}}/ig, obj.routeNmae);
+            row = row.replace(/{{RouteID}}/ig, obj.RouteID);
+            row = row.replace(/{{Start}}/ig, obj.Start);
+            row = row.replace(/{{End}}/ig, obj.End);
+            row = row.replace(/{{TotalDistance}}/ig, obj.TotalDistance);
+            var stops = "";
+            obj.Intermediate.split(",").forEach(function (stop) {
+                stops += "<li>" + stop + "</li>"
+            });
+            row = row.replace(/{{bus-stops}}/ig, stops);
+            $('#accordionExample').append(row);
+        });
+        $("#accordionExample").niceScroll();
     });
 }

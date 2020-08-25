@@ -24,11 +24,9 @@
                 @*<ul class="">
             <li>
                 @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)
-                <a href="#" data-locale="en">English</a>
             </li>
             <li>
                 @Html.ActionLink("العربية", "ChangeCulture", "Home", new { lang = "ar" }, null)
-                <a href="#" data-locale="ar">Arabic</a>
             </li>
             </ul>*@
             </div>
@@ -65,66 +63,6 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <ul class="layers-list" id="map-layers-list-dd">
-                    @*<li>
-                            <div class="icon"><img src="~/Content/images/bank.svg" /></div>
-                            <div class="title">Bank</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(this,'bank')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon"><img src="~/Content/images/sleep.svg" /></div>
-                            <div class="title">Hotels</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'hotel')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon"><img src="~/Content/images/fuel.svg" /></div>
-                            <div class="title">Fuel Station</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'fuel')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon"><img src="~/Content/images/XMLID_125_.svg" /></div>
-                            <div class="title">Hospitals</div>
-                            <div class="toggle-btn">
-                                <div class="toggle-button-cover">
-                                    <div class="button-cover">
-                                        <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox" onchange="toggleLayer(event,'hospitals')">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>*@
                 </ul>
             </div>
         </div>
@@ -226,66 +164,7 @@
         </div>
         <div class="content">
             <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Bus Route Name
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <span class="icon"><img src="~/Content/images/gps.svg" /></span>
-                                    <span class="font-weight-bold">Source</span>
-                                    <span class="time">4:03am</span>
-                                </div>
-                                <div class="col-6">
-                                    <span class="icon"><img src="~/Content/images/finish.svg" /></span>
-                                    <span class="font-weight-bold">Destination</span>
-                                    <span class="time">4:03am</span>
-                                </div>
-                            </div>
-
-                            <div class="row" style=" margin-top: 25px; margin-bottom: 13px; ">
-                                <div class="col">
-                                    <span class="font-weight-bold">Route: </span>
-                                    <ul class="bus-stops">
-                                        <li>stop 1</li>
-                                        <li>stop 2</li>
-                                        <li>stop 3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <span class="font-weight-bold">Total Distance: </span>
-                                    <span class="font-weight-bold">40 Km</span>
-                                </div>
-                                <div class="col-6">
-                                    <button class="viewbtn" type="button">Map View</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Collapsible Group Item #2
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -489,6 +368,53 @@
                 </div>
             </div>
         </li>
+    </script>
+
+    <script id="bus_route_entry" type="text/template">
+        <div class="card">
+            <div class="card-header" id="{{routeNmae}}-{{RouteID}}-heading">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{routeNmae}}-{{RouteID}}" aria-expanded="true" aria-controls="{{routeNmae}}-{{RouteID}}">
+                        {{routeNmae}}
+                    </button>
+                </h2>
+            </div>
+
+            <div id="{{routeNmae}}-{{RouteID}}" class="collapse show" aria-labelledby="{{routeNmae}}-{{RouteID}}-heading" >
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="icon"><img src="/Content/images/gps.svg" /></span>
+                            <span class="font-weight-bold">Source</span>
+                            <span class="time">{{Start}}</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="icon"><img src="/Content/images/finish.svg" /></span>
+                            <span class="font-weight-bold">Destination</span>
+                            <span class="time">{{End}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row" style=" margin-top: 25px; margin-bottom: 13px; ">
+                        <div class="col">
+                            <span class="font-weight-bold">Route: </span>
+                            <ul class="bus-stops">
+                                {{bus-stops}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="font-weight-bold">Total Distance: </span>
+                            <span class="font-weight-bold">{{TotalDistance}}</span>
+                        </div>
+                        <div class="col-6">
+                            <button class="viewbtn" type="button" onclick="onBusRouteClick({{RouteID}}, '{{Start}}', '{{End}}')">Map View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </script>
 
     @RenderBody()
