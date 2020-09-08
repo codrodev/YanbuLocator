@@ -27,6 +27,7 @@ namespace RCY_Yanbu_Locator.Controllers
                 ViewBag.Title = "محدد ينبع";
             }
             return View();
+
         }
 
         public ActionResult ChangeCulture(string lang)

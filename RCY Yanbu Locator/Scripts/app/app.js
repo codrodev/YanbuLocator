@@ -249,6 +249,8 @@ function onOpenNewsEventsPopup(refresh) {
 
             $('#nav-home').append(row);
         });
+
+        $(".news-popup .tab-pane").niceScroll();
     });
 
     fetchEventsArray(refresh).then(function (eventsArray) {

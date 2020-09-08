@@ -185,6 +185,8 @@
     <Content Include="Content\images\geom\polygon.png" />
     <Content Include="Content\images\gps.svg" />
     <Content Include="Content\images\half-moon.svg" />
+    <Content Include="Content\images\heart.svg" />
+    <Content Include="Content\images\helmet.svg" />
     <Content Include="Content\images\hotel.svg" />
     <Content Include="Content\images\Image1.png" />
     <Content Include="Content\images\Image2.png" />

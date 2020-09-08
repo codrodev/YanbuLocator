@@ -24,7 +24,7 @@ jQuery(function ($) {
         setTooltips();
     });
 
-    $(".popup .content").niceScroll();        
+    $(".hotel-popup .content").niceScroll();        
    
 });
 
@@ -42,6 +42,7 @@ var taxiPnlVisible = false;
 var rulesPnlVisible = false;
 var historyPnlVisible = false;
 var newsPnlVisible = false;
+var emergencyPnlVisible = false;
 
 function togglePanel(pnl) {
     resetPanels();
@@ -94,6 +95,10 @@ function togglePanel(pnl) {
             $('.news-popup').addClass('d-block');
             onOpenNewsEventsPopup();
             break;
+        case 'emergency':
+            emergencyPnlVisible = true;
+            $('.emergency-popup').addClass('d-block');
+            break;
     }
 }
 
@@ -112,6 +117,8 @@ function resetPanels() {
     rulesPnlVisible = false;
     historyPnlVisible = false;
     newsPnlVisible = false;
+    emergencyPnlVisible = false;
+    $('.emergency-popup').removeClass('d-block');
     $('.news-popup').removeClass('d-block');
     $('.history-popup').removeClass('d-block');
     $('.bank-popup').removeClass('d-block');

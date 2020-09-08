@@ -1,4 +1,4 @@
-@{
+﻿@{
     var lang = @HttpContext.Current.Request.Cookies["lang"].Value;
     var dir = lang == "en" ? "ltr" : "rtl";
     var langRev = lang == "en" ? "ar" : "en";
@@ -363,12 +363,64 @@
         </div>
     </div>
 
-    <div class="popup news-popup">
+    <div class="popup emergency-popup">
         <div class="title">
-            News & Events
+            Emergency Servicies
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
+            <div class="item-title">
+                Health
+                <img src="~/Content/images/heart.svg" />
+            </div>
+            <div class="emergency-items">
+                <div class="row">
+                    <div class="col-6">
+                        Emergency Services
+                    </div>
+                    <div class="col-6">
+                        2342332
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        Ambulance
+                    </div>
+                    <div class="col-6">
+                        2342332
+                    </div>
+                </div>
+            </div>
+            <div class="item-title">
+                Safety Department
+                <img src="~/Content/images/helmet.svg" />
+            </div>
+            <div class="emergency-items">
+                <div class="row">
+                    <div class="col-6">
+                        Fire Department
+                    </div>
+                    <div class="col-6">
+                        2342332
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        Police Department
+                    </div>
+                    <div class="col-6">
+                        2342332
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        Police Department
+                    </div>
+                    <div class="col-6">
+                        2342332
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
