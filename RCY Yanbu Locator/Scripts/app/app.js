@@ -3,6 +3,15 @@ var hotelsArray;
 var weatherInfo;
 var taxisArray;
 var busRouteArray;
+var newsArray;
+var eventsArray;
+var currenciesArray;
+var fromCurrencyId;
+var toCurrencyId;
+var initFromCurrrency = "SAR";
+var initToCurrrency = "USD";
+var inputCurrency;
+var currentConvertedCurrencyVal;
 
 function initApp() {
     initMap();
@@ -170,7 +179,7 @@ function fetchBusRouteArray(refresh) {
 
 function onOpenBusRoutePopup(refresh) {
     fetchBusRouteArray(refresh).then(function (busRouteArray) {
-        console.log(busRouteArray);
+        //console.log(busRouteArray);
         $('#accordionExample').html('');
         var temp = $.trim($('#bus_route_entry').html());
         busRouteArray.forEach(function (obj) {
@@ -188,4 +197,147 @@ function onOpenBusRoutePopup(refresh) {
         });
         $("#accordionExample").niceScroll();
     });
+}
+
+function fetchNewsArray(refresh) {
+    if (refresh) newsArray = newsArray;
+    return $.when(
+        newsArray ||
+        $.get({
+            url: baseAPIsURL + "GetRCYNews",
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (response) {
+                if (typeof response == "object" && response.length) {
+                    newsArray = response;
+                }
+            },
+            error: function (err) { }
+        })
+    );
+}
+
+function fetchEventsArray(refresh) {
+    if (refresh) eventsArray = eventsArray;
+    return $.when(
+        eventsArray ||
+        $.get({
+            url: baseAPIsURL + "GetRCYEvents",
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (response) {
+                if (typeof response == "object" && response.length) {
+                    eventsArray = response;
+                }
+            },
+            error: function (err) { }
+        })
+    );
+}
+
+function onOpenNewsEventsPopup(refresh) {
+
+    fetchNewsArray(refresh).then(function (newsArray) {
+        //console.log(newsArray);
+        $('#nav-home').html('');
+        var temp = $.trim($('#news-entry').html());
+        newsArray.forEach(function (obj) {
+            var row = temp.replace(/{{IMAGE_URL}}/ig, obj.IMAGE_URL);
+            row = row.replace(/{{NEWS_DATE}}/ig, obj.NEWS_DATE);
+            row = row.replace(/{{NEWS}}/ig, obj["NEWS_" + lang.toUpperCase()]);
+            row = row.replace(/{{DESCRIPTION}}/ig, obj["DESCRIPTION_" + lang.toUpperCase()]);
+
+            $('#nav-home').append(row);
+        });
+    });
+
+    fetchEventsArray(refresh).then(function (eventsArray) {
+        //console.log(eventsArray);
+        $('#nav-profile').html('');
+        var temp = $.trim($('#events-entry').html());
+        eventsArray.forEach(function (obj) {
+            var row = temp.replace(/{{PICTURE_URL}}/ig, obj.PICTURE_URL);
+            row = row.replace(/{{EVENT_DATE}}/ig, obj.EVENT_DATE);
+            row = row.replace(/{{NAME}}/ig, obj["NAME_" + lang.toUpperCase()]);
+            row = row.replace(/{{DESCRIPTION}}/ig, obj["DESCRIPTION_" + lang.toUpperCase()]);
+
+            $('#nav-profile').append(row);
+        });
+    });
+}
+
+function fetchCurrenciesArray(refresh) {
+    if (refresh) currenciesArray = currenciesArray;
+    return $.when(
+        currenciesArray ||
+        $.get({
+            url: baseAPIsURL + "m_GetAllCurrencies",
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (response) {
+                if (typeof response == "object" && response.length) {
+                    currenciesArray = response;
+                }
+            },
+            error: function (err) { }
+        })
+    );
+}
+
+function onOpenCurrencyExchangePopup() {
+    if (!currenciesArray) {
+        fetchCurrenciesArray().then(function (currenciesArray) {
+            currenciesArray.forEach(function (obj) {
+                $("#from_currency_dd").append($("<option     />").val(obj.CurrencyId).text(obj.CurrencyId + " " + obj.CurrencyName));
+                $("#to_currency_dd").append($("<option     />").val(obj.CurrencyId).text(obj.CurrencyId + " " + obj.CurrencyName));
+            });
+
+            $("#from_currency_dd").val(initFromCurrrency);
+            $("#to_currency_dd").val(initToCurrrency);
+
+            $("#from_currency_dd").on("change", function () {
+                fromCurrencyId = $("#from_currency_dd").val();
+                $("#from_currency_id").text(fromCurrencyId);
+                currencyDDChange();
+            }).change()
+
+            $("#to_currency_dd").on("change", function () {
+                toCurrencyId = $("#to_currency_dd").val();
+                $(".to_currency_id").text(toCurrencyId);
+                currencyDDChange();
+            }).change()
+
+            $("#input_currency_tf").on("change paste keyup wheel", function () {
+                inputCurrency = this.value;
+                inputCurrencyChange();
+            })
+            inputCurrency = $("#input_currency_tf").val();
+
+        });
+    }
+}
+
+function currencyDDChange() {
+    //console.log(fromCurrencyId, toCurrencyId);
+    if (fromCurrencyId && toCurrencyId) {
+        $.get({
+            url: baseAPIsURL + "m_GetCurrencyValue?key=" + fromCurrencyId + "_" + toCurrencyId,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (response) {
+                //console.log(response);
+                if (typeof response == "number") {
+                    currentConvertedCurrencyVal = response;
+                    $("#current_currency_value").text(response.toFixed(3));
+                    inputCurrencyChange();
+                }
+            },
+            error: function (err) { }
+        })
+    }
+}
+
+function inputCurrencyChange() {
+    //console.log(inputCurrency);
+    $("#input_currency_value").text((inputCurrency * currentConvertedCurrencyVal).toFixed(3));
 }

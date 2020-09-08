@@ -1,4 +1,4 @@
-@{
+﻿@{
     var lang = @HttpContext.Current.Request.Cookies["lang"].Value;
     var dir = lang == "en" ? "ltr" : "rtl";
     var langRev = lang == "en"?"ar":"en";
@@ -162,7 +162,7 @@
 
     <div class="popup busroute-popup">
         <div class="title">
-            Bus Route
+            <span data-i18n="busroute"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
@@ -174,7 +174,7 @@
 
     <div class="popup currency-popup">
         <div class="title">
-            Currency Exchange
+            <span data-i18n="currency_exchange"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
@@ -182,26 +182,20 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-5">
-                            <select class="form-control">
-                                <option selected>INR Indian Rupees</option>
-                                <option>USD Indian Rupees</option>
-                                <option>MYR Indian Rupees</option>
+                            <select class="form-control" id="from_currency_dd">
                             </select>
                         </div>
                         <div class="col-2">
                             <img src="~/Content/images/exchange2.svg" style="height: 41px;" />
                         </div>
                         <div class="col-5">
-                            <select class="form-control">
-                                <option selected>INR Indian Rupees</option>
-                                <option>USD Indian Rupees</option>
-                                <option>MYR Indian Rupees</option>
+                            <select class="form-control" id="to_currency_dd">
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 pricecalc">
-                            1 (INR) = 0.03 (USD)
+                            1 <span id="from_currency_id"></span> = <span id="current_currency_value"></span> <span class="to_currency_id"></span>
                         </div>
                     </div>
                 </div>
@@ -209,13 +203,13 @@
 
             <div class="row">
                 <div class="col-5">
-                    <input type="text" class="form-control" value="1.32" />
+                    <input type="number" class="form-control" value="1" id="input_currency_tf" min="0"/>
                 </div>
                 <div class="col-2">
                     <i class="fas fa-equals"></i>
                 </div>
                 <div class="col-5">
-                    0.23 (USD)
+                    <span id="input_currency_value"></span> <span class="to_currency_id"></span>
                 </div>
             </div>
         </div>
@@ -357,56 +351,10 @@
             </nav>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <div class="news-item">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="~/Content/images/Image3.png" />
-                                <div class="datestamp">30 jun 2010 4:07pm</div>
-                            </div>
-                            <div class="col-8">
-                                <h1>News Heading</h1>
-                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="~/Content/images/Image3.png" />
-                                <div class="datestamp">30 jun 2010 4:07pm</div>
-                            </div>
-                            <div class="col-8">
-                                <h1>News Heading</h1>
-                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div class="news-item">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="~/Content/images/Image3.png" />
-                                <div class="datestamp">30 jun 2010 4:07pm</div>
-                            </div>
-                            <div class="col-8">
-                                <h1>News Heading</h1>
-                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="~/Content/images/Image3.png" />
-                                <div class="datestamp">30 jun 2010 4:07pm</div>
-                            </div>
-                            <div class="col-8">
-                                <h1>News Heading</h1>
-                                <div>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.</div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
 
             </div>
@@ -487,6 +435,36 @@
                             <button class="viewbtn" type="button" onclick="onBusRouteClick({{RouteID}}, '{{Start}}', '{{End}}')">Map View</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="news-entry" type="text/template">
+        <div class="news-item">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{IMAGE_URL}}" />
+                    <div class="datestamp">{{NEWS_DATE}}</div>
+                </div>
+                <div class="col-8">
+                    <h1>{{NEWS}}</h1>
+                    <div>{{DESCRIPTION}}</div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="events-entry" type="text/template">
+        <div class="news-item">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{PICTURE_URL}}" />
+                    <div class="datestamp">{{EVENT_DATE}}</div>
+                </div>
+                <div class="col-8">
+                    <h1>{{NAME}}</h1>
+                    <div>{{DESCRIPTION}}</div>
                 </div>
             </div>
         </div>

@@ -69,6 +69,7 @@ function togglePanel(pnl) {
         case 'currency':
             currencyPnlVisible = true;
             $('.currency-popup').addClass('d-block');
+            onOpenCurrencyExchangePopup();
             break;
         case 'weather':
             weatherPnlVisible = true;
@@ -91,6 +92,7 @@ function togglePanel(pnl) {
         case 'news':
             newsPnlVisible = true;
             $('.news-popup').addClass('d-block');
+            onOpenNewsEventsPopup();
             break;
     }
 }

@@ -242,7 +242,7 @@ function onHotelClick(Id, lat, lon, name) {
     console.log(Id, lat, lon);
     yanbuMap.graphics.clear();
     var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32).setOffset(0, 16);
-    var point = new Point(lon, lat, new SpatialReference({ wkid: 4326 }));
+    var point = new Point(lat, lon , new SpatialReference({ wkid: 4326 }));
     var icon = new Graphic(point, pictureMarkerSymbol);
     var label = new Graphic(point, new TextSymbol(name).setOffset(0, 32));
     yanbuMap.graphics.add(icon);
@@ -251,14 +251,14 @@ function onHotelClick(Id, lat, lon, name) {
 }
 
 function onBusRouteClick(routeID, source, dest) {
-    console.log(routeID);
+    //console.log(routeID);
     $.get({
         url: baseAPIsURL + "m_GetBusRouteDetailsById?Id=" + routeID,
         dataType: 'json',
         contentType: "application/json",
         success: function (response) {
             if (typeof response == "object") {
-                console.log(response);
+                //console.log(response);
                 yanbuMap.graphics.clear();
                 var sls = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color("#FDAF85"), 4);
                 var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32).setOffset(0, 16);
