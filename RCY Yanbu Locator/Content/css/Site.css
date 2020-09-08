@@ -5,8 +5,8 @@ textarea {
     max-width: 280px;
 }
 
-body{
-    overflow:hidden;
+body {
+    overflow: hidden;
 }
 
 .navbar-inverse {
@@ -16,8 +16,8 @@ body{
     padding: 4px 10px 6px 5px;
 }
 
-.container{
-    max-width:100% !important
+.container {
+    max-width: 100% !important
 }
 
 .menu .hamburger {
@@ -64,7 +64,7 @@ body{
 
 .menu-items {
     left: 25%;
-    right: auto;    
+    right: auto;
     width: fit-content;
     z-index: 100;
     position: absolute;
@@ -83,14 +83,15 @@ body{
 }
 
 #map-container_zoom_slider {
-    bottom: 70px !important
+    bottom: 60px !important
 }
 
-.layers-ddl{
-    position:absolute;
-    left:20px;
-    top:75px;
-    z-index:100;
+.layers-ddl {
+    position: absolute;
+    left: 20px;
+    top: 75px;
+    z-index: 100;
+    box-shadow: black 0px 1px 3px;
 }
 
 .dropdown-toggle::after {
@@ -118,20 +119,20 @@ body{
     border-radius: 4px;
 }
 
-.dropdown-menu{
-    width:218px;
+.dropdown-menu {
+    width: 218px;
 }
 
 .layers-list li {
     display: flex;
     flex-wrap: nowrap;
-    height:28px;
+    height: 28px;
 }
+
 .layers-list .icon {
 }
 
-.layers-list .toggle-btn{
-    
+.layers-list .toggle-btn {
 }
 
 .layers-list .title {
@@ -172,7 +173,7 @@ body{
 .toggle-button-cover {
     display: table-cell;
     position: relative;
-    width: 200px;    
+    width: 200px;
     box-sizing: border-box;
 }
 
@@ -189,7 +190,7 @@ body{
     position: relative;
     top: 7px;
     width: 30px;
-    height: 14px;    
+    height: 14px;
     overflow: hidden;
 }
 
@@ -255,8 +256,8 @@ body{
     transition: 0.3s ease all;
 }
 
-.hotel-popup th{
-    text-align:center;
+.hotel-popup th {
+    text-align: center;
 }
 
 .popup {
@@ -310,12 +311,12 @@ button.viewbtn {
 
 .salah-popup {
     background: transparent linear-gradient(129deg, #FFBA6A 0%, #089603 100%) 0% 0% no-repeat padding-box;
-    width:430px;
+    width: 430px;
 }
 
-.salah-popup .row{
-    margin-bottom:15px;
-}
+    .salah-popup .row {
+        margin-bottom: 15px;
+    }
 
     .salah-popup .salahname {
         font-weight: bold;
@@ -335,17 +336,17 @@ button.viewbtn {
 
 .card-header button:after {
     font-family: 'Glyphicons Halflings';
-    content: ""; 
-    float: right; 
-    color: grey; 
+    content: "";
+    float: right;
+    color: grey;
 }
 
 .panel-heading button.collapsed:after {
-    content: ""; 
+    content: "";
 }
 
-.busroute-popup .content{
-    padding:5px;
+.busroute-popup .content {
+    padding: 5px;
 }
 
 .card-header {
@@ -360,8 +361,8 @@ button.viewbtn {
     margin-bottom: 6px;
 }
 
-.busroute-popup .btn-link{
-    color:white;
+.busroute-popup .btn-link {
+    color: white;
 }
 
     .busroute-popup .btn-link:hover, .btn-link:focus, .btn-link.focus {
@@ -385,60 +386,61 @@ ul.bus-stops li {
 
 ul.bus-stops {
     display: inline-flex;
-    padding:0px;
+    padding: 0px;
 }
 
 .busroute-popup .card-body {
     background: #F2F2F2;
 }
+
 .busroute-popup .icon img {
     height: 17px;
-    margin-right:3px;
+    margin-right: 3px;
 }
 
-.busroute-popup .viewbtn{
-    float:right;
+.busroute-popup .viewbtn {
+    float: right;
 }
 
 ul.bus-stops li:last-child::after {
-    content:' '
+    content: ' '
 }
 
 span.close-btn {
     float: left;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .popup table {
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 
 
-    .currency-popup {
+.currency-popup {
     background: transparent linear-gradient(129deg, #BD66FD 0%, #FF4040 100%) 0% 0% no-repeat padding-box;
-    width:500px;
+    width: 500px;
 }
 
-.currency-popup .content{
-    padding:10px
-}
-
-    .currency-popup .content > .row {
-        height: 150px;
-        display: flex;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        margin: auto;
-        color: white;
+    .currency-popup .content {
+        padding: 10px
     }
 
+        .currency-popup .content > .row {
+            height: 150px;
+            display: flex;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            margin: auto;
+            color: white;
+        }
 
-.currency-popup .content > .row:first-child {
-    border-bottom: 1px solid #FFFFFF;
-}
+
+            .currency-popup .content > .row:first-child {
+                border-bottom: 1px solid #FFFFFF;
+            }
 
 .pricecalc {
     padding-top: 25px;
@@ -446,18 +448,18 @@ span.close-btn {
 
 .weather-popup {
     background: transparent linear-gradient(129deg, #F971FF 0%, #36C0E2 100%) 0% 0% no-repeat padding-box;
-    color:white;
+    color: white;
 }
 
-.weather-popup .content{
-    padding:30px;
-}
+    .weather-popup .content {
+        padding: 30px;
+    }
 
-.weather-popup img{
-    height:30px;
-}
+    .weather-popup img {
+        height: 30px;
+    }
 
-    .weather-popup .content div{
+    .weather-popup .content div {
         text-align: center;
     }
 
@@ -484,13 +486,12 @@ span.close-btn {
 
 .taxi-popup {
     background: transparent linear-gradient(130deg, #44DFEB 0%, #FC6C6C 100%) 0% 0% no-repeat;
-    text-align:center
+    text-align: center
 }
 
 .rules-popup {
     background: transparent linear-gradient(129deg, #2076CB 0%, #9B6601 100%) 0% 0% no-repeat padding-box;
-    color:white;
-   
+    color: white;
 }
 
     .rules-popup .content {
@@ -506,27 +507,28 @@ span.close-btn {
 .rule-item div:first-child {
     border-bottom: 1px solid;
 }
+
 .rule-item {
     margin-bottom: 12px;
 }
 
 .history-popup {
     background: transparent linear-gradient(129deg, #395FFF 0%, #00AA34 100%) 0% 0% no-repeat;
-    color:white;
+    color: white;
 }
 
-.history-popup .content{
-    padding:15px;
-    font-size:.6em;
-}
+    .history-popup .content {
+        padding: 15px;
+        font-size: .6em;
+    }
 
-.history-popup img{
-    width:100%;
-}
+    .history-popup img {
+        width: 100%;
+    }
 
-.center{
-    display:flex;
-    align-items:center;
+.center {
+    display: flex;
+    align-items: center;
 }
 
 .locale-switcher {
@@ -576,3 +578,41 @@ span.close-btn {
     .news-item h1 {
         font-size: 1.3em;
     }
+
+
+.ar .menu-items li {
+    float: right;
+}
+
+.ar .popup {
+    position: absolute;
+    top: 200px;
+    right: unset;
+    left: 50px
+}
+
+.ar .layers-ddl {
+    position: absolute;
+    left: unset;
+    right: 20px;
+}
+
+.ar .menu .hamburger {
+    background: black;
+    padding: 5px 8px;
+    border-radius: 5px;
+    position: absolute;
+    top: 75px;
+    right: unset;
+    left: 15px;
+}
+
+.ar .layers-list .title {
+    width: 350px;
+    text-align: right;
+}
+
+.ar span.close-btn {
+    float: right;
+    cursor: pointer;
+}
