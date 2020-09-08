@@ -274,8 +274,7 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
     max-height: 445px;
-    background: #9C3600;
-    color: white;
+ 
 }
 
     .popup .title {
@@ -349,6 +348,12 @@ button.viewbtn {
 
 .emergency-popup .content {
     padding: 13px;
+   
+}
+
+.emergency-popup {
+    background: #9C3600;
+    color: white;
 }
 
 .busroute-popup .content {
