@@ -98,6 +98,7 @@ function togglePanel(pnl) {
         case 'emergency':
             emergencyPnlVisible = true;
             $('.emergency-popup').addClass('d-block');
+            onOpenEmergencyServicesPopup();
             break;
     }
 }

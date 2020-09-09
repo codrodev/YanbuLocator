@@ -368,59 +368,8 @@
             Emergency Servicies
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
-        <div class="content">
-            <div class="item-title">
-                Health
-                <img src="~/Content/images/heart.svg" />
-            </div>
-            <div class="emergency-items">
-                <div class="row">
-                    <div class="col-6">
-                        Emergency Services
-                    </div>
-                    <div class="col-6">
-                        2342332
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        Ambulance
-                    </div>
-                    <div class="col-6">
-                        2342332
-                    </div>
-                </div>
-            </div>
-            <div class="item-title">
-                Safety Department
-                <img src="~/Content/images/helmet.svg" />
-            </div>
-            <div class="emergency-items">
-                <div class="row">
-                    <div class="col-6">
-                        Fire Department
-                    </div>
-                    <div class="col-6">
-                        2342332
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        Police Department
-                    </div>
-                    <div class="col-6">
-                        2342332
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        Police Department
-                    </div>
-                    <div class="col-6">
-                        2342332
-                    </div>
-                </div>
-            </div>
+        <div class="content" id="emergency-content">
+            
         </div>
     </div>
 
@@ -528,6 +477,27 @@
                     <h1>{{NAME}}</h1>
                     <div>{{DESCRIPTION}}</div>
                 </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="emergency-item-entry" type="text/template">
+        <div class="item-title">
+            {{SERVICETYPE}}
+            @*<img src="~/Content/images/heart.svg" />*@
+        </div>
+        <div class="emergency-items">
+            {{emergencySubItems}}
+        </div>
+    </script>
+
+    <script id="emergency-sub-item-entry" type="text/template">
+        <div class="row">
+            <div class="col-6">
+                {{NAME}}
+            </div>
+            <div class="col-6">
+                {{PHONE}}
             </div>
         </div>
     </script>

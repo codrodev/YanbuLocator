@@ -12,6 +12,7 @@ var initFromCurrrency = "SAR";
 var initToCurrrency = "USD";
 var inputCurrency;
 var currentConvertedCurrencyVal;
+var emergencyServices;
 
 function initApp() {
     initMap();
@@ -317,6 +318,59 @@ function onOpenCurrencyExchangePopup() {
 
         });
     }
+}
+
+function fetchEmergencyServices(refresh) {
+    if (refresh) emergencyServices = undefined;
+    var deferred = new $.Deferred();
+
+    emergencyServices ? deferred.resolve(emergencyServices) :
+        $.get({
+            url: baseAPIsURL + "GetRCYEmergencyServices",
+            dataType: 'json',
+
+            success: function (response) {
+                if (typeof response == "object") {
+                    emergencyServices = {};
+                    try {
+                        response.forEach(function (obj) {
+                            if (!emergencyServices[obj.SERVICETYPE]) emergencyServices[obj.SERVICETYPE] = [];
+                            emergencyServices[obj.SERVICETYPE].push(obj);
+                        });
+                        deferred.resolve(emergencyServices);
+                    } catch (e) {
+                        emergencyServices = undefined;
+                    }
+                }
+            },
+            error: function (err) {
+
+            }
+        })
+    return deferred.promise();
+}
+
+function onOpenEmergencyServicesPopup(refresh) {
+    fetchEmergencyServices(refresh).then(function (emergencyServices) {
+        //console.log(emergencyServices);
+        $('#emergency-content').html('');
+        var temp = $.trim($('#emergency-item-entry').html());
+        var subtemp = $.trim($('#emergency-sub-item-entry').html());
+        Object.keys(emergencyServices).forEach(function (key) {
+            var row = temp.replace(/{{SERVICETYPE}}/ig, key);
+            var subrows = "";
+            emergencyServices[key].forEach(function (obj) {
+                var subrow = subtemp.replace(/{{NAME}}/ig, obj.NAME);
+                subrow = subrow.replace(/{{PHONE}}/ig, obj.PHONE);
+                subrows += subrow;
+            });
+            row = row.replace(/{{emergencySubItems}}/ig, subrows);
+            $('#emergency-content').append(row);
+        });
+        ///Content/images/helmet.svg
+        ///Content/images/heart.svg
+        $('#emergency-content').niceScroll();
+    });
 }
 
 function currencyDDChange() {
