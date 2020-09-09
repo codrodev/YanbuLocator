@@ -274,7 +274,8 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
     max-height: 445px;
- 
+    background: #AE3D02;
+    color: white;
 }
 
     .popup .title {
@@ -311,7 +312,7 @@ button.viewbtn {
 }
 
 .salah-popup {
-    background: transparent linear-gradient(129deg, #FFBA6A 0%, #089603 100%) 0% 0% no-repeat padding-box;
+    background: #811802;
     width: 430px;
 }
 
@@ -342,6 +343,16 @@ button.viewbtn {
     color: grey;
 }
 
+.hotel-popup thead tr {
+    background: #AE3D02;
+}
+
+.hotel-popup tr {
+    background: #811802;
+    border-bottom: 9px solid #AE3D02;
+    color: white;
+}
+
 .panel-heading button.collapsed:after {
     content: "";
 }
@@ -351,8 +362,8 @@ button.viewbtn {
    
 }
 
-.emergency-popup {
-    background: #9C3600;
+.emergency-popup{
+     background: #9C3600;
     color: white;
 }
 
@@ -362,10 +373,9 @@ button.viewbtn {
 
 .card-header {
     padding: 0px;
-    background: transparent linear-gradient(94deg, #DD4C00 0%, #FDAF85 100%) 0% 0% no-repeat padding-box;
-    border-radius: 5px !important;
-    opacity: 1;
-    /* color: white; */
+    background: #811802;
+    border-radius: 5px 5px 0px 0px !important;
+    opacity: 1;    
 }
 
 .card {
@@ -401,7 +411,7 @@ ul.bus-stops {
 }
 
 .busroute-popup .card-body {
-    background: #F2F2F2;
+    background: #AE3D02;
 }
 
 .busroute-popup .icon img {
@@ -411,6 +421,10 @@ ul.bus-stops {
 
 .busroute-popup .viewbtn {
     float: right;
+}
+
+.busroute-popup{
+    background:white;
 }
 
 ul.bus-stops li:last-child::after {
@@ -428,7 +442,7 @@ span.close-btn {
 
 
 .currency-popup {
-    background: transparent linear-gradient(129deg, #BD66FD 0%, #FF4040 100%) 0% 0% no-repeat padding-box;
+    background: #811802;
     width: 500px;
 }
 
@@ -458,7 +472,7 @@ span.close-btn {
 }
 
 .weather-popup {
-    background: transparent linear-gradient(129deg, #F971FF 0%, #36C0E2 100%) 0% 0% no-repeat padding-box;
+    background: #811802;
     color: white;
 }
 
@@ -474,6 +488,21 @@ span.close-btn {
         text-align: center;
     }
 
+
+
+.taxi-popup tr {
+    background: #811802;
+    border-bottom: 5px solid #AE3D02;
+    color: white;
+}
+
+
+    .taxi-popup thead tr {
+        background: #AE3D02;
+    }
+
+
+
 .popup.weather-popup .content .col-4 {
     padding: 11px;
     font-size: .8em;
@@ -484,6 +513,12 @@ span.close-btn {
     border-left: 1px solid white;
     padding-left: 20px;
 }
+.weather-popup .row {
+    background: #AE3D02;
+}
+    .weather-popup .row:nth-child(1) {
+        background: #811802;
+    }
 
 .weather-popup .degree {
     text-align: left !important;
@@ -496,12 +531,12 @@ span.close-btn {
 }
 
 .taxi-popup {
-    background: transparent linear-gradient(130deg, #44DFEB 0%, #FC6C6C 100%) 0% 0% no-repeat;
+    background: #AE3D02;
     text-align: center
 }
 
 .rules-popup {
-    background: transparent linear-gradient(129deg, #2076CB 0%, #9B6601 100%) 0% 0% no-repeat padding-box;
+    
     color: white;
 }
 
@@ -519,12 +554,15 @@ span.close-btn {
     border-bottom: 1px solid;
 }
 
+.rule-item div:nth-child(2) {
+    background: #811802;
+}
 .rule-item {
     margin-bottom: 12px;
 }
 
 .history-popup {
-    background: transparent linear-gradient(129deg, #395FFF 0%, #00AA34 100%) 0% 0% no-repeat;
+    background: #811802;
     color: white;
 }
 
@@ -548,7 +586,7 @@ span.close-btn {
 
 
 .news-popup {
-    background: transparent linear-gradient(129deg, #26BFF7 0%, #B90202 100%) 0% 0% no-repeat padding-box;
+    background: #811802;
 }
 
     .news-popup .content {
@@ -556,7 +594,7 @@ span.close-btn {
     }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-    color: #807373;
+    color: #811802;
     background-color: #fff;
     border-color: #dee2e6 #dee2e6 #fff;
     border-radius: 0px;
@@ -572,8 +610,8 @@ span.close-btn {
 }
 
 .nav-tabs .nav-link {
-    background: #c3c1c1 0% 0% no-repeat padding-box;
-    color: #524e4e;
+    background: #A75E4E 0% 0% no-repeat padding-box;
+    color: white;
     font-weight: bold;
     border-radius: 0px;
     border: 1px;

@@ -201,6 +201,7 @@
     <Content Include="Content\images\news-admin.svg" />
     <Content Include="Content\images\pray.svg" />
     <Content Include="Content\images\rules.svg" />
+    <Content Include="Content\images\sun.svg" />
     <Content Include="Content\images\sunrise.svg" />
     <Content Include="Content\images\sunset.svg" />
     <Content Include="Content\images\taxi.svg" />
