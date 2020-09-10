@@ -43,6 +43,7 @@ var rulesPnlVisible = false;
 var historyPnlVisible = false;
 var newsPnlVisible = false;
 var emergencyPnlVisible = false;
+var poiPnlVisible = false;
 
 function togglePanel(pnl) {
     resetPanels();
@@ -99,6 +100,10 @@ function togglePanel(pnl) {
             emergencyPnlVisible = true;
             $('.emergency-popup').addClass('d-block');
             break;
+        case 'poi':
+            poiPnlVisible = true;
+            $('.poi-popup').addClass('d-block');
+            break;
     }
 }
 
@@ -118,6 +123,8 @@ function resetPanels() {
     historyPnlVisible = false;
     newsPnlVisible = false;
     emergencyPnlVisible = false;
+    poiPnlVisible = false;
+    $('.poi-popup').removeClass('d-block');
     $('.emergency-popup').removeClass('d-block');
     $('.news-popup').removeClass('d-block');
     $('.history-popup').removeClass('d-block');

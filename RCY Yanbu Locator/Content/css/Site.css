@@ -382,11 +382,17 @@ button.viewbtn {
     margin-bottom: 6px;
 }
 
-.busroute-popup .btn-link {
+.busroute-popup .btn-link, .poi-popup .btn-link {
     color: white;
 }
 
-    .busroute-popup .btn-link:hover, .btn-link:focus, .btn-link.focus {
+.poi-popup .card {
+    margin-bottom: 6px;
+    border: 1px solid #811802;
+    border-radius: 6px 6px 0px 0px;
+}
+
+    .busroute-popup .btn-link:hover, .btn-link:focus, .btn-link.focus, .poi-popup .btn-link:hover {
         color: white;
         text-decoration: none;
     }
@@ -410,7 +416,7 @@ ul.bus-stops {
     padding: 0px;
 }
 
-.busroute-popup .card-body {
+.busroute-popup .card-body, .poi-popup .card-body {
     background: #AE3D02;
 }
 
@@ -589,7 +595,7 @@ span.close-btn {
     background: #811802;
 }
 
-    .news-popup .content {
+    .news-popup .content, .poi-popup .content {
         padding: 15px;
     }
 
@@ -621,6 +627,12 @@ span.close-btn {
 
 .emergency-items .row .col-6:nth-child(2) {
     text-align: right;
+}
+
+.poi-items {
+    background: #811802;
+    margin-bottom: 10px;
+    padding: 3px 10px;
 }
 
 .news-item .col-8 {

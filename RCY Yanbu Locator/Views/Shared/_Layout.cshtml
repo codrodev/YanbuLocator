@@ -55,6 +55,8 @@
                 <li onclick="togglePanel('news')" id="news"><img src="~/Content/images/news-admin.svg" /></li>
                 <li onclick="togglePanel('emergency')" id="emergency"><img src="~/Content/images/alarm.svg" /></li>
                 <li onclick="togglePanel('currency')" id="currency"><img src="~/Content/images/exchange.svg" /></li>
+                <li onclick="togglePanel('poi')" id="poi"><img src="~/Content/images/marker.svg" /></li>
+                <li onclick="togglePanel('gallery')" id="gallery"><img src="~/Content/images/image-gallery.svg" /></li>
             </ul>
         </div>
     </div>
@@ -66,7 +68,6 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <ul class="layers-list" id="map-layers-list-dd">
-                    
                 </ul>
             </div>
         </div>
@@ -168,10 +169,10 @@
         </div>
         <div class="content">
             <div class="accordion" id="accordionExample">
-              
-                        </div>
-                    </div>
-                </div>
+
+            </div>
+        </div>
+    </div>
 
     <div class="popup currency-popup">
         <div class="title">
@@ -204,7 +205,7 @@
 
             <div class="row">
                 <div class="col-5">
-                    <input type="number" class="form-control" value="1" id="input_currency_tf" min="0"/>
+                    <input type="number" class="form-control" value="1" id="input_currency_tf" min="0" />
                 </div>
                 <div class="col-2">
                     <i class="fas fa-equals"></i>
@@ -352,10 +353,10 @@
             </nav>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    
+
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    
+
                 </div>
 
             </div>
@@ -424,6 +425,69 @@
         </div>
     </div>
 
+    <div class="popup poi-popup">
+        <div class="title">
+            News & Events
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-poi-tab" data-toggle="tab" href="#nav-poi" role="tab" aria-controls="nav-poi" aria-selected="true">POI</a>
+                    <a class="nav-item nav-link" id="nav-kiosk-tab" data-toggle="tab" href="#nav-kiosk" role="tab" aria-controls="nav-kiosk" aria-selected="false">KIOSK</a>
+
+                </div>
+            </nav>
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-poi" role="tabpanel" aria-labelledby="nav-poi-tab">
+                    <div class="poi-items">
+                        No Type
+                    </div>
+                    <div class="poi-items">
+                        No Type
+                    </div>
+                    <div class="poi-items">
+                        No Type
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-kiosk" role="tabpanel" aria-labelledby="nav-kiosk-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#machine1" aria-expanded="true" aria-controls="{{routeNmae}}-{{RouteID}}">
+                                    Machine
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="machine1" class="collapse show" aria-labelledby="machine">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div>
+                                            Location name: Yanbu
+                                        </div>
+                                        <div>
+                                            IP Address: 10.3.23.2
+                                        </div>
+                                        <div>
+                                            SR: 01
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="viewbtn" type="button" onclick="onBusRouteClick(2, 'Start-2', 'End-2')">Map View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <div id="map-container">
 
     </div>
@@ -465,7 +529,7 @@
                 </h2>
             </div>
 
-            <div id="{{routeNmae}}-{{RouteID}}" class="collapse show" aria-labelledby="{{routeNmae}}-{{RouteID}}-heading" >
+            <div id="{{routeNmae}}-{{RouteID}}" class="collapse show" aria-labelledby="{{routeNmae}}-{{RouteID}}-heading">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
