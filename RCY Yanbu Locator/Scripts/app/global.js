@@ -43,6 +43,8 @@ var rulesPnlVisible = false;
 var historyPnlVisible = false;
 var newsPnlVisible = false;
 var emergencyPnlVisible = false;
+var poiPnlVisible = false;
+var galleryPnlVisible = false;
 
 function togglePanel(pnl) {
     resetPanels();
@@ -100,6 +102,14 @@ function togglePanel(pnl) {
             $('.emergency-popup').addClass('d-block');
             onOpenEmergencyServicesPopup();
             break;
+        case 'poi':
+            poiPnlVisible = true;
+            $('.poi-popup').addClass('d-block');
+            break;
+        case 'gallery':
+            galleryPnlVisible = true;
+            $('.gallery-popup').addClass('d-block');
+            break;
     }
 }
 
@@ -119,6 +129,10 @@ function resetPanels() {
     historyPnlVisible = false;
     newsPnlVisible = false;
     emergencyPnlVisible = false;
+    poiPnlVisible = false;
+    galleryPnlVisible = false;
+    $('.gallery-popup').removeClass('d-block');
+    $('.poi-popup').removeClass('d-block');
     $('.emergency-popup').removeClass('d-block');
     $('.news-popup').removeClass('d-block');
     $('.history-popup').removeClass('d-block');
