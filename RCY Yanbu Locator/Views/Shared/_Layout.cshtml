@@ -488,6 +488,88 @@
         </div>
     </div>
 
+    <div class="popup gallery-popup">
+        <div class="title">
+            RYC Gallery
+            <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="content">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab" aria-controls="nav-image" aria-selected="true">Image</a>
+                    <a class="nav-item nav-link" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab" aria-controls="nav-video" aria-selected="false">Video</a>
+
+                </div>
+            </nav>
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
+                  <div class="image-gallery">
+                      <div class="row">
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div>
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div>
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div>
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div>
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div>
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div>
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div>
+                          <div class="col-3">
+                              <img src="~/Content/images/gallery-1.png" />
+                          </div> 
+                      </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#machine1" aria-expanded="true" aria-controls="{{routeNmae}}-{{RouteID}}">
+                                    Machine
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="machine1" class="collapse show" aria-labelledby="machine">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div>
+                                            Location name: Yanbu
+                                        </div>
+                                        <div>
+                                            IP Address: 10.3.23.2
+                                        </div>
+                                        <div>
+                                            SR: 01
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="viewbtn" type="button" onclick="onBusRouteClick(2, 'Start-2', 'End-2')">Map View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <div id="map-container">
 
     </div>

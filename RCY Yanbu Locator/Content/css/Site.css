@@ -595,7 +595,7 @@ span.close-btn {
     background: #811802;
 }
 
-    .news-popup .content, .poi-popup .content {
+    .news-popup .content, .poi-popup .content, .gallery-popup .content {
         padding: 15px;
     }
 
@@ -609,6 +609,18 @@ span.close-btn {
     padding: 6px;
 }
 
+.image-gallery .row div {
+    margin: 0px -15px;
+    min-width: 130px;
+}
+
+.image-gallery {
+    margin-left: 15px;
+}
+
+    .image-gallery img {
+        width: 100%;
+    }
 .datestamp {
     font-size: .9em;
     text-align: center;
