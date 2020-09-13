@@ -94,6 +94,13 @@ body {
     box-shadow: black 0px 1px 3px;
 }
 
+#BasemapToggle {
+    position: absolute;
+    left: 20px;
+    top: 110px;
+    z-index: 99;
+}
+
 .dropdown-toggle::after {
     display: inline-block;
     margin-left: 4.355em;
@@ -701,6 +708,14 @@ span.close-btn {
     position: absolute;
     left: unset;
     right: 20px;
+    
+}
+
+.ar #BasemapToggle {
+    position: absolute;
+    left: unset;
+    right: 20px;
+    z-index: 99;
 }
 
 .ar .menu .hamburger {

@@ -20,6 +20,7 @@ function initMap() {
         "dojo/on",
         "esri/Color",
         "esri/map",
+        "esri/dijit/BasemapToggle",
         "esri/graphic",
         "esri/InfoTemplate",
         "esri/geometry/Extent",
@@ -33,7 +34,7 @@ function initMap() {
         "esri/tasks/IdentifyTask",
         "esri/tasks/IdentifyParameters",
         "dojo/_base/array",
-        "dojo/domReady!"], function (connect, dom, parser, on, Color, Map, graphic, InfoTemplate, Extent, ArcGISDynamicMapServiceLayer, Point, Polyline, SpatialReference, PictureMarkerSymbol, SimpleLineSymbol, TextSymbol, IdentifyTask, IdentifyParameters, arrayUtils) {
+        "dojo/domReady!"], function (connect, dom, parser, on, Color, Map, BasemapToggle, graphic, InfoTemplate, Extent, ArcGISDynamicMapServiceLayer, Point, Polyline, SpatialReference, PictureMarkerSymbol, SimpleLineSymbol, TextSymbol, IdentifyTask, IdentifyParameters, arrayUtils) {
             parser.parse();
             //initExtent = new Extent({
             //    "xmin": 419580.3022800002,
@@ -67,6 +68,12 @@ function initMap() {
                 sliderStyle: "small"
 
             });
+
+            var toggle = new BasemapToggle({
+                map: yanbuMap,
+                basemap: "satellite"
+            }, "BasemapToggle");
+            toggle.startup();
 
             dojo.connect(yanbuMap, "onLoad", function mapReady() {
                 setTimeout(function () {
