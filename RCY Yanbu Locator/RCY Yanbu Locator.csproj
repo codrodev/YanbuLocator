@@ -180,6 +180,10 @@
     <Content Include="Content\images\factory.svg" />
     <Content Include="Content\images\finish.svg" />
     <Content Include="Content\images\gallery-1.png" />
+    <Content Include="Content\images\gallery-2.png" />
+    <Content Include="Content\images\gallery-3.png" />
+    <Content Include="Content\images\gallery-4.png" />
+    <Content Include="Content\images\gallery-5.png" />
     <Content Include="Content\images\geom\line.png" />
     <Content Include="Content\images\geom\marker-icon.png" />
     <Content Include="Content\images\geom\point.png" />

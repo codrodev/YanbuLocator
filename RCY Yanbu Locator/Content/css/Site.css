@@ -602,7 +602,7 @@ span.close-btn {
     background: #811802;
 }
 
-    .news-popup .content, .poi-popup .content, .gallery-popup .content {
+    .news-popup .content, .poi-popup .content, .gallery-popup .content, .info-popup .content {
         padding: 15px;
     }
 
