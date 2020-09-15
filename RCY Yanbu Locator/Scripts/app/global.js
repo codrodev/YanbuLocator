@@ -45,6 +45,7 @@ var newsPnlVisible = false;
 var emergencyPnlVisible = false;
 var poiPnlVisible = false;
 var galleryPnlVisible = false;
+var infoPnlVisible = false;
 
 function togglePanel(pnl) {
     resetPanels();
@@ -111,6 +112,10 @@ function togglePanel(pnl) {
             galleryPnlVisible = true;
             $('.gallery-popup').addClass('d-block');
             break;
+        case 'info':
+            infoPnlVisible = true;
+            $('.info-popup').addClass('d-block');
+            break;
     }
 }
 
@@ -132,6 +137,8 @@ function resetPanels() {
     emergencyPnlVisible = false;
     poiPnlVisible = false;
     galleryPnlVisible = false;
+    infoPnlVisible = false;
+    $('.info-popup').removeClass('d-block');
     $('.gallery-popup').removeClass('d-block');
     $('.poi-popup').removeClass('d-block');
     $('.emergency-popup').removeClass('d-block');
