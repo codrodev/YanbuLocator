@@ -47,5 +47,11 @@
   "news": "News",
   "currency": "Currency",
   "currency_exchange": "Currency Exchange",
-  "emergency": "Emergency Services"
+  "emergency": "Emergency Services",
+  "poikiosk": "POI & KIOSK",
+  "Gallery": "RYC Gallery",
+  "POI": "POI",
+  "KIOSK": "KIOSK",
+  "Images": "Images",
+  "Videos": "Videos"
 }

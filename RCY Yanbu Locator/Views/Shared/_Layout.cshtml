@@ -366,7 +366,7 @@
 
     <div class="popup emergency-popup">
         <div class="title">
-            Emergency Services
+            <span data-i18n="emergency"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content" id="emergency-content">
@@ -376,28 +376,20 @@
 
     <div class="popup poi-popup">
         <div class="title">
-            News & Events
+            <span data-i18n="poikiosk"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
             <nav>
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-poi-tab" data-toggle="tab" href="#nav-poi" role="tab" aria-controls="nav-poi" aria-selected="true">POI</a>
-                    <a class="nav-item nav-link" id="nav-kiosk-tab" data-toggle="tab" href="#nav-kiosk" role="tab" aria-controls="nav-kiosk" aria-selected="false">KIOSK</a>
+                    <a class="nav-item nav-link active" id="nav-poi-tab" data-toggle="tab" href="#nav-poi" role="tab" aria-controls="nav-poi" aria-selected="true"><span data-i18n="POI"></span></a>
+                    <a class="nav-item nav-link" id="nav-kiosk-tab" data-toggle="tab" href="#nav-kiosk" role="tab" aria-controls="nav-kiosk" aria-selected="false"><span data-i18n="KIOSK"></span></a>
 
                 </div>
             </nav>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-poi" role="tabpanel" aria-labelledby="nav-poi-tab">
-                    <div class="poi-items">
-                        No Type
-                    </div>
-                    <div class="poi-items">
-                        No Type
-                    </div>
-                    <div class="poi-items">
-                        No Type
-                    </div>
+                    
                 </div>
                 <div class="tab-pane fade" id="nav-kiosk" role="tabpanel" aria-labelledby="nav-kiosk-tab">
                     <div class="card">
@@ -439,14 +431,14 @@
 
     <div class="popup gallery-popup">
         <div class="title">
-            RYC Gallery
+            <span data-i18n="Gallery"></span>
             <span class="close-btn" onclick="closePopup()"><i class="far fa-times-circle"></i></span>
         </div>
         <div class="content">
             <nav>
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab" aria-controls="nav-image" aria-selected="true">Image</a>
-                    <a class="nav-item nav-link" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab" aria-controls="nav-video" aria-selected="false">Video</a>
+                    <a class="nav-item nav-link active" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab" aria-controls="nav-image" aria-selected="true"><span data-i18n="Images"></span></a>
+                    <a class="nav-item nav-link" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab" aria-controls="nav-video" aria-selected="false"><span data-i18n="Videos"></span></a>
 
                 </div>
             </nav>
@@ -598,7 +590,7 @@
     </script>
 
     <script id="news-entry" type="text/template">
-        <div class="news-item">
+        <div class="news-item" >
             <div class="row">
                 <div class="col-4">
                     <img src="{{IMAGE_URL}}" />
@@ -613,7 +605,7 @@
     </script>
 
     <script id="events-entry" type="text/template">
-        <div class="news-item">
+        <div class="news-item" onclick="onEventClick('{{LOC_COORDINATES}}', '{{NAME}}')" style="cursor: pointer">
             <div class="row">
                 <div class="col-4">
                     <img src="{{PICTURE_URL}}" />

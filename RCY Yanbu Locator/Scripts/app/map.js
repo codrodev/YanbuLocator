@@ -246,12 +246,34 @@ function fillMapLayersDD(layersArr, visibleLayers) {
 }
 
 function onHotelClick(Id, lat, lon, name) {
-    console.log(Id, lat, lon);
+    //console.log(Id, lat, lon);
     yanbuMap.graphics.clear();
     var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32).setOffset(0, 16);
     var point = new Point(lat, lon , new SpatialReference({ wkid: 4326 }));
     var icon = new Graphic(point, pictureMarkerSymbol);
-    var label = new Graphic(point, new TextSymbol(name).setOffset(0, 32));
+    var symbol = new TextSymbol(name).setOffset(0, 32);
+    symbol.haloColor = new Color("white");
+    symbol.haloSize = 1;
+    var label = new Graphic(point, symbol);
+    yanbuMap.graphics.add(icon);
+    yanbuMap.graphics.add(label);
+    yanbuMap.centerAndZoom(point, 13);
+}
+
+function onEventClick(coords, name) {
+    //console.log(coords, name);
+    var coordsArray = coords.split(",");
+    var lat = coordsArray[0].trim();
+    var lon = coordsArray[1].trim();
+    
+    yanbuMap.graphics.clear();
+    var pictureMarkerSymbol = new PictureMarkerSymbol('/Content/images/geom/marker-icon.png', 32, 32).setOffset(0, 16);
+    var point = new Point(lat, lon, new SpatialReference({ wkid: 4326 }));
+    var icon = new Graphic(point, pictureMarkerSymbol);
+    var symbol = new TextSymbol(name).setOffset(0, 32);
+    symbol.haloColor = new Color("white");
+    symbol.haloSize = 1;
+    var label = new Graphic(point, symbol);
     yanbuMap.graphics.add(icon);
     yanbuMap.graphics.add(label);
     yanbuMap.centerAndZoom(point, 13);
@@ -283,8 +305,15 @@ function onBusRouteClick(routeID, source, dest) {
                 var sourceGraphic = new Graphic(sourcePoint, pictureMarkerSymbol);
                 var destGraphic = new Graphic(destPoint, pictureMarkerSymbol);
 
-                var sourceLabel = new Graphic(sourcePoint, new TextSymbol(source).setOffset(0, 32));
-                var destLabel = new Graphic(destPoint, new TextSymbol(dest).setOffset(0, 32));
+                var sourceSymbol = new TextSymbol(source).setOffset(0, 32);
+                sourceSymbol.haloColor = new Color("white");
+                sourceSymbol.haloSize = 1;
+                var sourceLabel = new Graphic(sourcePoint, sourceSymbol);
+
+                var destSymbol = new TextSymbol(dest).setOffset(0, 32);
+                destSymbol.haloColor = new Color("white");
+                destSymbol.haloSize = 1;
+                var destLabel = new Graphic(destPoint, destSymbol);
 
                 var routeGraphic = new Graphic(polyline, sls);
 
@@ -299,4 +328,8 @@ function onBusRouteClick(routeID, source, dest) {
         },
         error: function (err) { }
     })
+}
+
+function onPoiClick(name, url, code) {
+    console.log(name, url, code);
 }

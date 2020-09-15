@@ -13,6 +13,7 @@ var initToCurrrency = "USD";
 var inputCurrency;
 var currentConvertedCurrencyVal;
 var emergencyServices;
+var poisAndKIOSKObj;
 
 function initApp() {
     initMap();
@@ -263,6 +264,8 @@ function onOpenNewsEventsPopup(refresh) {
             row = row.replace(/{{EVENT_DATE}}/ig, obj.EVENT_DATE);
             row = row.replace(/{{NAME}}/ig, obj["NAME_" + lang.toUpperCase()]);
             row = row.replace(/{{DESCRIPTION}}/ig, obj["DESCRIPTION_" + lang.toUpperCase()]);
+            row = row.replace(/{{LOC_COORDINATES}}/ig, obj.LOC_COORDINATES);
+            row = row.replace(/{{NAME}}/ig, obj["NAME_" + lang.toUpperCase()]);
 
             $('#nav-profile').append(row);
         });
@@ -373,6 +376,47 @@ function onOpenEmergencyServicesPopup(refresh) {
     });
 }
 
+function fetchPOIAndKiosk(refresh) {
+    if (refresh) poisAndKIOSKObj = undefined;
+    var deferred = new $.Deferred();
+
+    poisAndKIOSKObj ? deferred.resolve(poisAndKIOSKObj) :
+        $.get({
+            url: baseAPIsURL + "m_GetKioskAndCategories",
+            dataType: 'json',
+
+            success: function (response) {
+                if (typeof response == "object") {
+                    poisAndKIOSKObj = response;
+                    deferred.resolve(poisAndKIOSKObj);
+                }
+            },
+            error: function (err) {
+            }
+        })
+    return deferred.promise();
+}
+
+//
+
+function onOpenPOIAndKiosk(refresh) {
+    fetchPOIAndKiosk(refresh).then(function (poisAndKIOSKObj) {
+        $('#nav-poi').html('');
+        var pois = poisAndKIOSKObj.CategoriesDetail;
+        var Kiosk = poisAndKIOSKObj.Kiosk;
+        pois.forEach(function (poi) {
+            var toAppend = '<div class="poi-items" onclick="onPoiClick(\'{{name}}\', \'{{imageUrl}}\', {{code}})"><img src="' + poi.imageUrl + '" /> ' + poi.name + '</div>';
+            toAppend = toAppend.replace(/{{name}}/ig, poi.name);
+            toAppend = toAppend.replace(/{{imageUrl}}/ig, poi.imageUrl);
+            toAppend = toAppend.replace(/{{code}}/ig, poi.code);
+            $('#nav-poi').append(toAppend);
+        });
+        $("#nav-poi").niceScroll();
+    });
+
+}
+
+//---------------------------------------------------//
 function currencyDDChange() {
     //console.log(fromCurrencyId, toCurrencyId);
     if (fromCurrencyId && toCurrencyId) {

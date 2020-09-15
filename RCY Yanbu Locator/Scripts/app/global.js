@@ -104,6 +104,7 @@ function togglePanel(pnl) {
             break;
         case 'poi':
             poiPnlVisible = true;
+            onOpenPOIAndKiosk();
             $('.poi-popup').addClass('d-block');
             break;
         case 'gallery':
@@ -182,6 +183,11 @@ function setTooltips() {
     $("#currency").attr('data-original-title', $.i18n("currency"));
     $("#emergency").tooltip({ title: $.i18n("emergency"), placement: "top", trigger: "hover" });
     $("#emergency").attr('data-original-title', $.i18n("emergency"));
+    $("#poi").tooltip({ title: $.i18n("poikiosk"), placement: "top", trigger: "hover" });
+    $("#poi").attr('data-original-title', $.i18n("poikiosk"));
+    $("#gallery").tooltip({ title: $.i18n("Gallery"), placement: "top", trigger: "hover" });
+    $("#gallery").attr('data-original-title', $.i18n("Gallery"));
+
 }
 
 
